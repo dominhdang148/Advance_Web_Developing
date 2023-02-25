@@ -1,0 +1,17 @@
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TatBlog.Services\bin\Debug\net7.0\TatBlog.Services.deps.json
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TatBlog.Services\bin\Debug\net7.0\TatBlog.Services.dll
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TatBlog.Services\bin\Debug\net7.0\TatBlog.Services.pdb
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TatBlog.Services\bin\Debug\net7.0\TatBlog.Core.dll
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TatBlog.Services\bin\Debug\net7.0\TatBlog.Data.dll
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TatBlog.Services\bin\Debug\net7.0\TatBlog.Core.pdb
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TatBlog.Services\bin\Debug\net7.0\TatBlog.Data.pdb
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TatBlog.Services\obj\Debug\net7.0\TatBlog.Services.csproj.AssemblyReference.cache
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TatBlog.Services\obj\Debug\net7.0\TatBlog.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TatBlog.Services\obj\Debug\net7.0\TatBlog.Services.AssemblyInfoInputs.cache
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TatBlog.Services\obj\Debug\net7.0\TatBlog.Services.AssemblyInfo.cs
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TatBlog.Services\obj\Debug\net7.0\TatBlog.Services.csproj.CoreCompileInputs.cache
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TatBlog.Services\obj\Debug\net7.0\TatBlog.Services.csproj.CopyComplete
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TatBlog.Services\obj\Debug\net7.0\TatBlog.Services.dll
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TatBlog.Services\obj\Debug\net7.0\refint\TatBlog.Services.dll
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TatBlog.Services\obj\Debug\net7.0\TatBlog.Services.pdb
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TatBlog.Services\obj\Debug\net7.0\ref\TatBlog.Services.dll
