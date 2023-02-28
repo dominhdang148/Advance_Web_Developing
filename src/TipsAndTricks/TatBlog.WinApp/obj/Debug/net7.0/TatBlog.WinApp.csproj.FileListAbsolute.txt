@@ -146,3 +146,4 @@ D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TipsAndTricks\TatBlog.WinApp\obj
 D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TipsAndTricks\TatBlog.WinApp\obj\Debug\net7.0\TatBlog.WinApp.pdb
 D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TipsAndTricks\TatBlog.WinApp\obj\Debug\net7.0\TatBlog.WinApp.genruntimeconfig.cache
 D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TipsAndTricks\TatBlog.WinApp\obj\Debug\net7.0\ref\TatBlog.WinApp.dll
+D:\BaiTap\AdvanceWeb\Advance_Web_Developing\src\TipsAndTricks\TatBlog.WinApp\bin\Debug\net7.0\System.Linq.Dynamic.Core.dll

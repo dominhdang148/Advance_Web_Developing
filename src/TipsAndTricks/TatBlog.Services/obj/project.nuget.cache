@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "D/Vo2OXhB9Um7LjYRsYd1TcqrmsOdJ/oTo6LKJtbYhcVmLPq9YaB8Iv3fijs6CJlS1DvB5bfY4VnS+LZXLsieQ==",
+  "dgSpecHash": "BPNIqd2ngBc+700Sr8deWxXObL0uT6HJzJ0LkWhBl36ZNQRpfAp9p+I7QMz19NqMRhjxbZcMgKoocPCef6RfCg==",
   "success": true,
   "projectFilePath": "D:\\BaiTap\\AdvanceWeb\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.Services\\TatBlog.Services.csproj",
   "expectedPackageFiles": [
@@ -45,6 +45,7 @@
     "C:\\Users\\Maxsys\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",
     "C:\\Users\\Maxsys\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.21.0\\system.identitymodel.tokens.jwt.6.21.0.nupkg.sha512",
     "C:\\Users\\Maxsys\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
+    "C:\\Users\\Maxsys\\.nuget\\packages\\system.linq.dynamic.core\\1.2.25\\system.linq.dynamic.core.1.2.25.nupkg.sha512",
     "C:\\Users\\Maxsys\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\Maxsys\\.nuget\\packages\\system.memory.data\\1.0.2\\system.memory.data.1.0.2.nupkg.sha512",
     "C:\\Users\\Maxsys\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
