@@ -1,4 +1,38 @@
-﻿using TatBlog.Data.Contexts;
+﻿#region First query
+//using TatBlog.Data.Contexts;
+//using TatBlog.Data.Seeders;
+
+//// Tọa đối tượng DbContẽt để quản lý phên làm việc
+//// với CSDL và trạng thái cảu các đối tượng
+
+//var context = new BlogDbContext();
+
+//// Tạo đối tượng khởi tạo dữ liệu mẫu
+
+//var seeder = new DataSeeder(context);
+
+//// Gọi hàm Initialize để nhập dữ liệu mẫu
+
+//seeder.Initialize();
+
+//// Đọc danh sách tác giả từ cơ sở dữ liệu
+
+//var authors = context.Authors.ToList();
+
+//// Xuất danh sách tác giả ra màn hình
+
+//Console.WriteLine("{0,-4}{1,-30}{2,-30}{3,12}", 
+//    "ID", "Full Name", "Email", "Joined Date");
+
+//foreach (var auth in authors)
+//{
+//    Console.WriteLine("{0,-4}{1,-30}{2,-30}{3,12}", 
+//        auth.Id, auth.FullName, auth.Email, auth.JoinedDate);
+//}
+#endregion
+
+#region Second query
+using TatBlog.Data.Contexts;
 
 // Tạo đối tượng DbContext để quảng lý phiên làm việc với
 // CSDL và trạng thái của các đối tượng
@@ -30,3 +64,8 @@ foreach (var post in posts)
     Console.WriteLine("Category      : {0}", post.Category);
     Console.WriteLine("".PadRight(80, '-'));
 }
+#endregion
+
+
+
+
