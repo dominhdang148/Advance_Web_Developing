@@ -44,5 +44,8 @@ namespace TatBlog.Services.Blogs
 
         // Tìm một thẻ theo tên định danh slug
         Task<Tag> FindTag_SlugAsync(string slug, CancellationToken cancellationToken = default);
+
+        // Lấy danh sách các thẻ
+        Task<IList<TagItem>> GetAllTagsWithPostAsync(CancellationToken cancellationToken = default);
     }
 }

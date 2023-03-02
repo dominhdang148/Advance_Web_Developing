@@ -174,17 +174,39 @@ var context = new BlogDbContext();
 
 var blogRepo = new BlogRepository(context);
 
-#region 1. Tìm một thẻ tag theo tên định danh slug
+#region 1. Hãy tạo các lớp và định nghĩa các phương thức cần thiết để truy vấn dữ liệu theo các yêu cầu sau:
+
+#region a. Tìm một thẻ tag theo tên định danh slug
 
 
 
-var tag = await blogRepo.FindTag_SlugAsync("blazor");
+//var tag = await blogRepo.FindTag_SlugAsync("blazor");
 
-Console.WriteLine("{0, -5} {1, -50} {2, 10}", "ID", "Name", "UrlSlug");
-Console.WriteLine("{0, -5} {1, -50} {2, 10}", tag.Id, tag.Name, tag.UrlSlug);
+//Console.WriteLine("{0, -5} {1, -20} {2, 10}", "ID", "Name", "UrlSlug");
+//Console.WriteLine("{0, -5} {1, -20} {2, 10}", tag.Id, tag.Name, tag.UrlSlug);
 
-Console.ReadKey();
+//Console.ReadKey();
 
 
 
 #endregion
+
+#region c. Lấy danh sách tất cả các thẻ (Tag) kèm theo số bài viết chứa thẻ đó. Kết quả trả về kiểu IList<TagItem>
+
+var tags = await blogRepo.GetAllTagsWithPostAsync();
+
+Console.WriteLine("{0, -5} {1, -50} {2, 10} ", "ID", "Name", "Post count");
+foreach (var tag in tags)
+{
+
+    Console.WriteLine("{0, -5} {1, -50} {2, 10}", tag.Id, tag.Name, tag.PostCount);
+}
+
+
+
+Console.ReadKey();
+
+#endregion
+
+#endregion
+

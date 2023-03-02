@@ -106,6 +106,18 @@ namespace TatBlog.Services.Blogs
             return await tagsQuery.FirstOrDefaultAsync(cancellationToken);
         }
 
+        public async Task<IList<TagItem>> GetAllTagsWithPostAsync(CancellationToken cancellationToken = default)
+        {
+            return await _context.Set<Tag>().Select(x => new TagItem()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                UrlSlug = x.UrlSlug,
+                Description = x.Description,
+                PostCount = x.Posts.Count(p => p.Published)
+            }).ToListAsync(cancellationToken);
+        }
+
         public BlogRepository(BlogDbContext context)
         {
             _context = context;
