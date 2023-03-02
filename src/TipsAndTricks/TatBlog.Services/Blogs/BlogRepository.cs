@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -98,6 +99,12 @@ namespace TatBlog.Services.Blogs
             return await tagQuery.ToPagedListAsync(pagingParams, cancellationToken);
         }
 
+        public async Task<Tag> FindTag_SlugAsync(string slug, CancellationToken cancellationToken = default)
+        {
+            IQueryable<Tag> tagsQuery = _context.Set<Tag>()
+                .Where(t => t.UrlSlug == slug);
+            return await tagsQuery.FirstOrDefaultAsync(cancellationToken);
+        }
 
         public BlogRepository(BlogDbContext context)
         {

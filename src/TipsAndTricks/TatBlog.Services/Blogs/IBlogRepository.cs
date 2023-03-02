@@ -29,7 +29,7 @@ namespace TatBlog.Services.Blogs
             int postID, string slug,
             CancellationToken cancellationToken = default);
 
-        // Tăng số lượt xem của mtộ bài viết
+        // Tăng số lượt xem của một bài viết
         Task IncreaseViewCountAsync(
             int postId,
             CancellationToken cancellationToken = default);
@@ -41,5 +41,8 @@ namespace TatBlog.Services.Blogs
         // Lấy danh sách từ khóa/thẻ và phân trang theo
         // các tham số pagingParam
         Task<IPagedList<TagItem>> GetPagedTagsAsync(IPagingParams pagingParams, CancellationToken cancellationToken = default);
+
+        // Tìm một thẻ theo tên định danh slug
+        Task<Tag> FindTag_SlugAsync(string slug, CancellationToken cancellationToken = default);
     }
 }

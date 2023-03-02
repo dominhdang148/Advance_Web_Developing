@@ -127,39 +127,64 @@
 
 #region Fifth query
 
+//using TatBlog.Data.Contexts;
+//using TatBlog.Services.Blogs;
+//using TatBlog.WinApp;
+
+//// Tạo đối tượng DbContext để quảng lý phiên làm việc với
+//// CSDL và trạng thái của các đối tượng
+//var context = new BlogDbContext();
+
+//// Tạo đối tượng BlogRepository
+
+//IBlogRepository blogRepo = new BlogRepository(context);
+
+//// Tạo đối tượng chưa tham số phân trang
+
+//var pagingParams = new PagingParams
+//{
+//    PageNumber = 1,               // Lấy kết quả ở trang số 1
+//    PageSize = 5,                 // Lấy 5 mẫu tin
+//    SortColumn = "Name",          // Sắp xếp theo tên
+//    SortOrder = "DESC"            // Theo chiều giảm dần
+//};
+
+//// Lấy danh sách từ khóa
+
+//var tagsList=await blogRepo.GetPagedTagsAsync(pagingParams);
+
+//// Xuất  ra màn hình
+
+//Console.WriteLine("{0,-5}{1,-50}{2,10}", "ID", "Name", "Count");
+
+//foreach (var tag in tagsList)
+//{
+//    Console.WriteLine("{0,-5}{1,-50}{2,10}", tag.Id, tag.Name, tag.PostCount);
+//}
+
+#endregion
+
+// ================================= C.  THỰC HÀNH =======================================
 using TatBlog.Data.Contexts;
 using TatBlog.Services.Blogs;
-using TatBlog.WinApp;
 
-// Tạo đối tượng DbContext để quảng lý phiên làm việc với
-// CSDL và trạng thái của các đối tượng
+
+
 var context = new BlogDbContext();
 
-// Tạo đối tượng BlogRepository
+var blogRepo = new BlogRepository(context);
 
-IBlogRepository blogRepo = new BlogRepository(context);
+#region 1. Tìm một thẻ tag theo tên định danh slug
 
-// Tạo đối tượng chưa tham số phân trang
 
-var pagingParams = new PagingParams
-{
-    PageNumber = 1,               // Lấy kết quả ở trang số 1
-    PageSize = 5,                 // Lấy 5 mẫu tin
-    SortColumn = "Name",          // Sắp xếp theo tên
-    SortOrder = "DESC"            // Theo chiều giảm dần
-};
 
-// Lấy danh sách từ khóa
+var tag = await blogRepo.FindTag_SlugAsync("blazor");
 
-var tagsList=await blogRepo.GetPagedTagsAsync(pagingParams);
+Console.WriteLine("{0, -5} {1, -50} {2, 10}", "ID", "Name", "UrlSlug");
+Console.WriteLine("{0, -5} {1, -50} {2, 10}", tag.Id, tag.Name, tag.UrlSlug);
 
-// Xuất  ra màn hình
+Console.ReadKey();
 
-Console.WriteLine("{0,-5}{1,-50}{2,10}", "ID", "Name", "Count");
 
-foreach (var tag in tagsList)
-{
-    Console.WriteLine("{0,-5}{1,-50}{2,10}", tag.Id, tag.Name, tag.PostCount);
-}
 
 #endregion
