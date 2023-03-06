@@ -165,10 +165,11 @@
 #endregion
 
 // ================================= C.  THỰC HÀNH =======================================
+using System.Globalization;
 using TatBlog.Data.Contexts;
+using TatBlog.Data.Seeders;
 using TatBlog.Services.Blogs;
-
-
+using TatBlog.WinApp;
 
 var context = new BlogDbContext();
 
@@ -191,22 +192,157 @@ var blogRepo = new BlogRepository(context);
 
 #endregion
 
+#region b. Tạo lớp DTO có tên là TagItem để chứa các thông tin về thẻ va số lượng bài viết chứa thẻ đó
+// Đã là ở file TatBlog.Core.DTO.TagItem.cs
+#endregion
 #region c. Lấy danh sách tất cả các thẻ (Tag) kèm theo số bài viết chứa thẻ đó. Kết quả trả về kiểu IList<TagItem>
 
-var tags = await blogRepo.GetAllTagsWithPostAsync();
+//var tags = await blogRepo.GetAllTagsWithPostAsync();
 
-Console.WriteLine("{0, -5} {1, -50} {2, 10} ", "ID", "Name", "Post count");
-foreach (var tag in tags)
+//Console.WriteLine("{0, -5} {1, -50} {2, 10} ", "ID", "Name", "Post count");
+//foreach (var tag in tags)
+//{
+
+//    Console.WriteLine("{0, -5} {1, -50} {2, 10}", tag.Id, tag.Name, tag.PostCount);
+//}
+
+
+
+//Console.ReadKey();
+
+#endregion
+#region d. Xóa một thẻ theo mã cho trước
+//Console.WriteLine("=============================== BEFORE DELETING ===============================");
+//var tags = await blogRepo.GetAllTagsWithPostAsync();
+
+//Console.WriteLine("{0, -5} {1, -50} {2, 10} ", "ID", "Name", "Post count");
+//foreach (var tag in tags)
+//{
+
+//    Console.WriteLine("{0, -5} {1, -50} {2, 10}", tag.Id, tag.Name, tag.PostCount);
+//}
+
+//Console.WriteLine("=============================== AFTER DELETING ===============================");
+
+//await blogRepo.DeleteTagByIDAsync(20);
+//tags = await blogRepo.GetAllTagsWithPostAsync();
+
+//Console.WriteLine("{0, -5} {1, -50} {2, 10} ", "ID", "Name", "Post count");
+//foreach (var tag in tags)
+//{
+
+//    Console.WriteLine("{0, -5} {1, -50} {2, 10}", tag.Id, tag.Name, tag.PostCount);
+//}
+//Console.ReadKey();
+#endregion
+
+#region e. Tìm một chuyên mục (Category) theo tên định danh (slug)
+
+//var category = await blogRepo.FindCategory_SlugAsync("mobile");
+
+//Console.WriteLine("{0, -5} {1, -20} {2, 10}", "ID", "Name", "UrlSlug");
+//Console.WriteLine("{0, -5} {1, -20} {2, 10}", category.Id, category.Name, category.UrlSlug);
+
+//Console.ReadKey();
+
+#endregion
+
+#region f. Tìm một chuyên mục theo mã số cho trước
+
+//var category = await blogRepo.FindCategory_IdAsync(5);
+
+//Console.WriteLine("{0, -5} {1, -20} {2, 10}", "ID", "Name", "UrlSlug");
+//Console.WriteLine("{0, -5} {1, -20} {2, 10}", category.Id, category.Name, category.UrlSlug);
+
+//Console.ReadKey();
+
+#endregion
+
+#region g. Tìm một chuyên mục theo mã số cho trước
+
+//Console.WriteLine("=============================== BEFORE CHANGING ===============================");
+//var categories = await blogRepo.GetCategoriesAsync();
+
+//Console.WriteLine("{0, -5} {1, -50} {2, 10} ", "ID", "Name", "URLSlug");
+//foreach (var category in categories)
+//{
+
+//    Console.WriteLine("{0, -5} {1, -50} {2, 10}", category.Id, category.Name, category.UrlSlug);
+//}
+
+//Console.WriteLine("=============================== AFTER CHANGING ===============================");
+
+//await blogRepo.Update_AddCategory(name:"UI/UX",urlSlug:"ui_ux",description:"Design system interface");
+//categories = await blogRepo.GetCategoriesAsync();
+
+//Console.WriteLine("{0, -5} {1, -50} {2, 10} ", "ID", "Name", "URLSlug");
+//foreach (var category in categories)
+//{
+//    Console.WriteLine("{0, -5} {1, -50} {2, 10}", category.Id, category.Name, category.UrlSlug);
+//}
+//Console.ReadKey();
+
+#endregion
+
+#region h. Xóa một chuyên mục tho mã số cho trước
+
+//Console.WriteLine("=============================== BEFORE DELETING ===============================");
+//var categories = await blogRepo.GetCategoriesAsync();
+
+//Console.WriteLine("{0, -5} {1, -50} {2, 10} ", "ID", "Name", "UrlSlug");
+//foreach (var category in categories)
+//{
+
+//    Console.WriteLine("{0, -5} {1, -50} {2, 10}", category.Id, category.Name, category.UrlSlug);
+//}
+
+//Console.WriteLine("=============================== AFTER DELETING ===============================");
+
+//await blogRepo.Delete_CategoryAsync(10);
+//categories = await blogRepo.GetCategoriesAsync();
+
+//Console.WriteLine("{0, -5} {1, -50} {2, 10} ", "ID", "Name", "UrlSlug");
+//foreach (var category in categories)
+//{
+
+//    Console.WriteLine("{0, -5} {1, -50} {2, 10}", category.Id, category.Name, category.UrlSlug);
+//}
+//Console.ReadKey();
+
+#endregion
+
+#region i. Kiểm tra tên định danh (slug) của một chuyên mục đã tồn tại hay chưa
+//bool result = await blogRepo.CheckCategoryExist_Async("algorithms");
+
+//Console.WriteLine(result);
+//Console.ReadKey();
+
+#endregion
+#region j. Lấy và phân trang danh sách chuyên mục, kết quả trả về kiểu IPagedList<CategoryItem>
+
+var pagingParams = new PagingParams
 {
+    PageNumber = 1,               // Lấy kết quả ở trang số 1
+    PageSize = 5,                 // Lấy 5 mẫu tin
+    SortColumn = "Name",          // Sắp xếp theo tên
+    SortOrder = "DESC"            // Theo chiều giảm dần
+};
 
-    Console.WriteLine("{0, -5} {1, -50} {2, 10}", tag.Id, tag.Name, tag.PostCount);
+
+
+var categoriesList = await blogRepo.GetPagedCategoriesAsync(pagingParams);
+
+
+
+Console.WriteLine("{0,-5}{1,-50}{2,10}", "ID", "Name", "Count");
+
+foreach (var category in categoriesList)
+{
+    Console.WriteLine("{0,-5}{1,-50}{2,10}", category.Id, category.Name, category.PostCount);
 }
-
-
 
 Console.ReadKey();
 
 #endregion
-
 #endregion
 
