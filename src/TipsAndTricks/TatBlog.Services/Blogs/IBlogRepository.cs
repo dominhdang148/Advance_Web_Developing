@@ -63,6 +63,10 @@ namespace TatBlog.Services.Blogs
         // Lấy và phân trang danh sách chuyên mục, kết quả trả về kiểu IPagedList<CategoryItem>
 
         Task<IPagedList<CategoryItem>> GetPagedCategoriesAsync(IPagingParams pagingParams, CancellationToken cancellation = default);
+
+        // Tìm một bài viết theo mã số
+        Task<Post> FindPost_IdAsync(int id, CancellationToken cancellationToken = default);
+
     }
 
 }

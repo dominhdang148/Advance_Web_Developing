@@ -320,29 +320,42 @@ var blogRepo = new BlogRepository(context);
 #endregion
 #region j. Lấy và phân trang danh sách chuyên mục, kết quả trả về kiểu IPagedList<CategoryItem>
 
-var pagingParams = new PagingParams
-{
-    PageNumber = 1,               // Lấy kết quả ở trang số 1
-    PageSize = 5,                 // Lấy 5 mẫu tin
-    SortColumn = "Name",          // Sắp xếp theo tên
-    SortOrder = "DESC"            // Theo chiều giảm dần
-};
+//var pagingParams = new PagingParams
+//{
+//    PageNumber = 1,               // Lấy kết quả ở trang số 1
+//    PageSize = 5,                 // Lấy 5 mẫu tin
+//    SortColumn = "Name",          // Sắp xếp theo tên
+//    SortOrder = "DESC"            // Theo chiều giảm dần
+//};
 
 
 
-var categoriesList = await blogRepo.GetPagedCategoriesAsync(pagingParams);
+//var categoriesList = await blogRepo.GetPagedCategoriesAsync(pagingParams);
 
 
 
-Console.WriteLine("{0,-5}{1,-50}{2,10}", "ID", "Name", "Count");
+//Console.WriteLine("{0,-5}{1,-50}{2,10}", "ID", "Name", "Count");
 
-foreach (var category in categoriesList)
-{
-    Console.WriteLine("{0,-5}{1,-50}{2,10}", category.Id, category.Name, category.PostCount);
-}
+//foreach (var category in categoriesList)
+//{
+//    Console.WriteLine("{0,-5}{1,-50}{2,10}", category.Id, category.Name, category.PostCount);
+//}
 
+//Console.ReadKey();
+
+#endregion
+#region l. Tìm một bài viết theo mã số
+
+var post = await blogRepo.FindPost_IdAsync(1);
+
+Console.WriteLine("ID            : {0}", post.Id);
+Console.WriteLine("Title         : {0}", post.Title);
+Console.WriteLine("View          : {0}", post.ViewCount);
+Console.WriteLine("Date          : {0:MM/dd/yyyy}", post.PostedDate);
+Console.WriteLine("Author        : {0}", post.Author.FullName);
+Console.WriteLine("Category      : {0}", post.Category.Name);
+Console.WriteLine("".PadRight(80, '-'));
 Console.ReadKey();
-
 #endregion
 #endregion
 

@@ -217,6 +217,11 @@ namespace TatBlog.Services.Blogs
             return await categoryQuery.ToPagedListAsync(pagingParams, cancellation);
         }
 
+        public async Task<Post> FindPost_IdAsync(int id, CancellationToken cancellationToken = default)
+        {
+            return await _context.Set<Post>().Include(p=>p.Author).Include(p=>p.Category).FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
+        }
+
         public BlogRepository(BlogDbContext context)
         {
             _context = context;
