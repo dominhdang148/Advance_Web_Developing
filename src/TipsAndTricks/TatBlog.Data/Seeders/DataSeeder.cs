@@ -263,13 +263,13 @@ namespace TatBlog.Data.Seeders
                 {
                     Name="Dart",
                     Description="An amazing programming language used in Flutter SDK"  ,
-                    UrlSlug="dart"
+                    UrlSlug="flutter"
                 }, // 18 dart
                 new()
                 {
                     Name="SQL",
                     Description="Popular Language used in data querying",
-                    UrlSlug="sql",
+                    UrlSlug="swift",
                 }, // 19 sql
             };
             _dbContext.AddRange(tags);
@@ -844,6 +844,8 @@ namespace TatBlog.Data.Seeders
             var categories = AddCategories();
             var tags = AddTags();
             var posts = AddPosts(authors, categories, tags);
+
+
         }
     }
 
