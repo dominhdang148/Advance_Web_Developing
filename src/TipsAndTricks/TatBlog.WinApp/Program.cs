@@ -318,6 +318,7 @@ var blogRepo = new BlogRepository(context);
 //Console.ReadKey();
 
 #endregion
+
 #region j. Lấy và phân trang danh sách chuyên mục, kết quả trả về kiểu IPagedList<CategoryItem>
 
 //var pagingParams = new PagingParams
@@ -344,6 +345,7 @@ var blogRepo = new BlogRepository(context);
 //Console.ReadKey();
 
 #endregion
+
 #region l. Tìm một bài viết theo mã số
 
 var post = await blogRepo.FindPost_IdAsync(1);
@@ -357,7 +359,5 @@ Console.WriteLine("Category      : {0}", post.Category.Name);
 Console.WriteLine("".PadRight(80, '-'));
 Console.ReadKey();
 #endregion
-
-
 #endregion
 
