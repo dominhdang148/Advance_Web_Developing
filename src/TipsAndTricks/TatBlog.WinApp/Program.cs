@@ -344,20 +344,5 @@ foreach (var category in categoriesList)
 Console.ReadKey();
 
 #endregion
-
-#region l. Tìm một bài viết theo mã số
-
-var post = await blogRepo.FindPost_IdAsync(1);
-
-Console.WriteLine("ID            : {0}", post.Id);
-Console.WriteLine("Title         : {0}", post.Title);
-Console.WriteLine("View          : {0}", post.ViewCount);
-Console.WriteLine("Date          : {0:MM/dd/yyyy}", post.PostedDate);
-Console.WriteLine("Author        : {0}", post.Author.FullName);
-Console.WriteLine("Category      : {0}", post.Category.Name);
-Console.WriteLine("".PadRight(80, '-'));
-Console.ReadKey();
-#endregion
-
 #endregion
 
