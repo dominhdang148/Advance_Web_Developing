@@ -22,10 +22,7 @@ namespace TatBlog.Data.Contexts
 
         public DbSet<Tag> Tags { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-D79P76S\DOMINHDANG;Database=Tatblog;Trusted_Connection=True;TrustServerCertificate=True");
-        }
+        public BlogDbContext(DbContextOptions<BlogDbContext> options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CategoryMap).Assembly);
