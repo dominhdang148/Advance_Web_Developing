@@ -4,10 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TatBlog.Core.Constants;
 using TatBlog.Core.Contracts;
 using TatBlog.Core.DTO;
 using TatBlog.Core.Entities;
@@ -216,10 +218,33 @@ namespace TatBlog.Services.Blogs
                 });
             return await categoryQuery.ToPagedListAsync(pagingParams, cancellation);
         }
-
-        public async Task<Post> FindPost_IdAsync(int id, CancellationToken cancellationToken = default)
+        public IQueryable<Post> FilterPost(PostQuery condition)
         {
-            return await _context.Set<Post>().Include(p => p.Author).Include(p => p.Category).FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
+            return _context.Set<Post>()
+                .Include(c => c.Category)
+                .Include(t => t.Tags)
+                .Include(a => a.Author)
+                .WhereIf(condition.AuthorId > 0, p => p.AuthorId == condition.AuthorId)
+                .WhereIf(!string.IsNullOrWhiteSpace(condition.AuthorSlug), p => p.UrlSlug == condition.AuthorSlug)
+                .WhereIf(condition.PostId > 0, p => p.Id == condition.PostId)
+                .WhereIf(condition.CategoryId > 0, p => p.CategoryId == condition.CategoryId)
+                .WhereIf(!string.IsNullOrWhiteSpace(condition.Keyword), p=>p.Title.ToLower().Contains(condition.Keyword.ToLower()))
+                .WhereIf(!string.IsNullOrWhiteSpace(condition.CategorySlug), p => p.Category.UrlSlug == condition.CategorySlug)
+                .WhereIf(condition.PostedYear > 0, p => p.PostedDate.Year == condition.PostedYear)
+                .WhereIf(condition.PostedMonth > 0, p => p.PostedDate.Month == condition.PostedMonth)
+                .WhereIf(condition.TagId > 0, p => p.Tags.Any(x => x.Id == condition.TagId))
+                .WhereIf(!string.IsNullOrWhiteSpace(condition.TagSlug), p => p.Tags.Any(x => x.UrlSlug == condition.TagSlug))
+                .WhereIf(condition.PublishedOnly != null, p => p.Published == condition.PublishedOnly);
+        }
+
+
+        public async Task<IPagedList<Post>> GetPagedPostAsync(PostQuery condition, int pageNumber = 1, int pageSize = 10, CancellationToken cancellationToken = default)
+        {
+            return await FilterPost(condition)
+                .ToPagedListAsync(
+                    pageNumber, pageSize,
+                    nameof(Post.PostedDate), "DESC",
+                    cancellationToken);
         }
 
         public BlogRepository(BlogDbContext context)

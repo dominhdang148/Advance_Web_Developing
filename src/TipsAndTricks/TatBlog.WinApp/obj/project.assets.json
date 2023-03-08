@@ -3592,11 +3592,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\BaiTap\\AdvanceWeb\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.WinApp\\TatBlog.WinApp.csproj",
+      "projectUniqueName": "D:\\BaiTap\\C#\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.WinApp\\TatBlog.WinApp.csproj",
       "projectName": "TatBlog.WinApp",
-      "projectPath": "D:\\BaiTap\\AdvanceWeb\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.WinApp\\TatBlog.WinApp.csproj",
+      "projectPath": "D:\\BaiTap\\C#\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.WinApp\\TatBlog.WinApp.csproj",
       "packagesPath": "C:\\Users\\Maxsys\\.nuget\\packages\\",
-      "outputPath": "D:\\BaiTap\\AdvanceWeb\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.WinApp\\obj\\",
+      "outputPath": "D:\\BaiTap\\C#\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.WinApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3618,14 +3618,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\BaiTap\\AdvanceWeb\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.Core\\TatBlog.Core.csproj": {
-              "projectPath": "D:\\BaiTap\\AdvanceWeb\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.Core\\TatBlog.Core.csproj"
+            "D:\\BaiTap\\C#\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.Core\\TatBlog.Core.csproj": {
+              "projectPath": "D:\\BaiTap\\C#\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.Core\\TatBlog.Core.csproj"
             },
-            "D:\\BaiTap\\AdvanceWeb\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.Data\\TatBlog.Data.csproj": {
-              "projectPath": "D:\\BaiTap\\AdvanceWeb\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.Data\\TatBlog.Data.csproj"
+            "D:\\BaiTap\\C#\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.Data\\TatBlog.Data.csproj": {
+              "projectPath": "D:\\BaiTap\\C#\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.Data\\TatBlog.Data.csproj"
             },
-            "D:\\BaiTap\\AdvanceWeb\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.Services\\TatBlog.Services.csproj": {
-              "projectPath": "D:\\BaiTap\\AdvanceWeb\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.Services\\TatBlog.Services.csproj"
+            "D:\\BaiTap\\C#\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.Services\\TatBlog.Services.csproj": {
+              "projectPath": "D:\\BaiTap\\C#\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.Services\\TatBlog.Services.csproj"
             }
           }
         }

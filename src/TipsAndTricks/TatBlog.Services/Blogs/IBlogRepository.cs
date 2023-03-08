@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TatBlog.Core.Constants;
 using TatBlog.Core.Contracts;
 using TatBlog.Core.DTO;
 using TatBlog.Core.Entities;
@@ -61,11 +62,14 @@ namespace TatBlog.Services.Blogs
         Task<bool> CheckCategoryExist_Async(string urlSlug, CancellationToken cancellationToken = default);
 
         // Lấy và phân trang danh sách chuyên mục, kết quả trả về kiểu IPagedList<CategoryItem>
-
         Task<IPagedList<CategoryItem>> GetPagedCategoriesAsync(IPagingParams pagingParams, CancellationToken cancellation = default);
 
-        // Tìm một bài viết theo mã số
-        Task<Post> FindPost_IdAsync(int id, CancellationToken cancellationToken = default);
+
+        //Task<IPagedList<Post>> GetPagedPostsAsync(PostQuery condition,
+        // IPagingParams pagingParams,
+        // CancellationToken cancellationToken = default);
+
+        public Task<IPagedList<Post>> GetPagedPostAsync(PostQuery condition, int pageNumber = 1, int pageSize = 10, CancellationToken cancellationToken = default);
     }
 
 }
