@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using TatBlog.Core.Constants;
 using TatBlog.Services.Blogs;
 
@@ -14,6 +15,7 @@ namespace TatBlog.WebApp.Controllers
         }
 
         public async Task<IActionResult> Index(
+            [FromQuery(Name ="k")] string keyword = null,
             [FromQuery(Name = "p")] int PageNumber = 1,
             [FromQuery(Name = "ps")] int PageSize = 10)
         {
@@ -21,6 +23,8 @@ namespace TatBlog.WebApp.Controllers
             var postQuery = new PostQuery()
             {
                 PublishedOnly = true,
+
+                Keyword = keyword
             };
 
             var postList = await _BlogRepository.GetPagedPostAsync(postQuery, PageNumber, PageSize);

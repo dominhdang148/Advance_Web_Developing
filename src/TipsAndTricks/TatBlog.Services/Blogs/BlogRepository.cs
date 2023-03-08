@@ -228,6 +228,7 @@ namespace TatBlog.Services.Blogs
                 .WhereIf(!string.IsNullOrWhiteSpace(condition.AuthorSlug), p => p.UrlSlug == condition.AuthorSlug)
                 .WhereIf(condition.PostId > 0, p => p.Id == condition.PostId)
                 .WhereIf(condition.CategoryId > 0, p => p.CategoryId == condition.CategoryId)
+                .WhereIf(!string.IsNullOrWhiteSpace(condition.Keyword), p=>p.Title.ToLower().Contains(condition.Keyword.ToLower()))
                 .WhereIf(!string.IsNullOrWhiteSpace(condition.CategorySlug), p => p.Category.UrlSlug == condition.CategorySlug)
                 .WhereIf(condition.PostedYear > 0, p => p.PostedDate.Year == condition.PostedYear)
                 .WhereIf(condition.PostedMonth > 0, p => p.PostedDate.Month == condition.PostedMonth)
