@@ -6,6 +6,8 @@
             : $"/{Model.ImageUrl}";
 }
 
+
+
 <article class="blog-entry mb-4">
     <div class="card">
         <div class="row g-0">
@@ -16,22 +18,45 @@
             </div>
             <div class=" col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">
-                        @Model.Title
-                    </h5>
+
+                    <a class="text-decoration-none card-title"
+                        asp-controller="Blog"
+                        asp-action="Post"
+                        asp-route-slug="@Model.UrlSlug"
+                        asp-route-year="@Model.PostedDate.Year"
+                        asp-route-month="@Model.PostedDate.Month"
+                        asp-route-day="@Model.PostedDate.Day"
+                        title="Post: @Model.Title">
+                         <h5 >
+                            @Model.Title
+                        </h5>
+                    </a>
+                        
+
                     <p class="card-text">
                         <small class="text-muted">
-                            Tác giả: 
+                            Tác giả:    
                         </small>
-                        <span class="text-primary">
+                  
+                         <a asp-controller="Blog"
+                            asp-action="Author"
+                            asp-route-slug="@Model.Author.UrlSlug"
+                            title="Author: @Model.Author.FullName"
+                            class="link-primary text-decoration-none">
                             @Model.Author.FullName
-                        </span>
+                        </a>
+
                         <small class="text-muted">
                             Chủ đề: 
                         </small>
-                        <span class="text-primary">
+                
+                        <a asp-controller="Blog"
+                            asp-action="Category"
+                            asp-route-slug="@Model.Category.UrlSlug"
+                            title="Category: @Model.Category.Name"
+                            class="link-primary text-decoration-none">
                             @Model.Category.Name
-                        </span>
+                        </a>
                     </p>
                     <p class="card-text">
                         @Html.Raw(Model.ShortDecription)
