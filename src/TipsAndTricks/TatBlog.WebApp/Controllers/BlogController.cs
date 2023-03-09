@@ -34,8 +34,44 @@ namespace TatBlog.WebApp.Controllers
 
         }
 
-        public IActionResult About() => View();
-        public IActionResult Contact() => View();
+        public IActionResult Author(string slug)
+        {
+
+            var postQuery=new PostQuery()
+            {
+
+            }
+
+            return View();
+        }
+
+        public IActionResult Category(string slug)
+        {
+            return View();
+        }
+
+
+        public IActionResult Tag(string slug)
+        {
+            return View();
+        }
+        public IActionResult Post(int year, int month, int day, string slug)
+        {
+            return View();
+        }
+        public IActionResult Archives(int year, int month)
+        {
+            return View();
+        }
+        public IActionResult About()
+        {
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
         public IActionResult Rss() => Content("Nội dung sẽ được cập nhật");
     }
 }

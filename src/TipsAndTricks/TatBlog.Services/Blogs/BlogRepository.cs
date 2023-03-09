@@ -225,6 +225,7 @@ namespace TatBlog.Services.Blogs
                 .Include(t => t.Tags)
                 .Include(a => a.Author)
                 .WhereIf(condition.AuthorId > 0, p => p.AuthorId == condition.AuthorId)
+                .WhereIf(!string.IsNullOrWhiteSpace(condition.AuthorSlug), p=>p.Author.UrlSlug==p.UrlSlug)
                 .WhereIf(!string.IsNullOrWhiteSpace(condition.AuthorSlug), p => p.UrlSlug == condition.AuthorSlug)
                 .WhereIf(condition.PostId > 0, p => p.Id == condition.PostId)
                 .WhereIf(condition.CategoryId > 0, p => p.CategoryId == condition.CategoryId)
