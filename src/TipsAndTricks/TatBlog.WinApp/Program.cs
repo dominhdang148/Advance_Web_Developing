@@ -99,12 +99,13 @@
 
 #region Fourth query
 
+//using TatBlog.Core.Constants;
 //using TatBlog.Data.Contexts;
 //using TatBlog.Services.Blogs;
 
 //// Tạo đối tượng DbContext để quảng lý phiên làm việc với
 //// CSDL và trạng thái của các đối tượng
-//var context = new BlogDbContext();
+//BlogDbContext context = new BlogDbContext();
 
 //// Tạo đối tượng BlogRepository
 
@@ -112,15 +113,20 @@
 
 //// Lấy danh sách chuyên mục
 
-//var categories = await blogRepo.GetCategoriesAsync();
+//PostQuery postQuery = new PostQuery()
+//{
+//    AuthorSlug = "jason-mouth"
+//};
+
+//var postList = await blogRepo.GetPagedPostAsync(postQuery);
 
 //// Xuất  ra màn hình
 
-//Console.WriteLine("{0,-5}{1,-50}{2,10}", "ID", "Name", "Count");
 
-//foreach (var category in categories)
+
+//foreach (var post in postList)
 //{
-//    Console.WriteLine("{0,-5}{1,-50}{2,10}", category.Id, category.Name, category.PostCount);
+//    Console.WriteLine("{0,-5}{1,-50}{2,10}", post.Id, post.Title);
 //}
 
 #endregion

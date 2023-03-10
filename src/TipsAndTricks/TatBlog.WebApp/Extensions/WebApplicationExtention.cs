@@ -20,7 +20,6 @@ namespace TatBlog.WebApp.Extensions
             builder.Services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddScoped<IBlogRepository, BlogRepository>();
-
             builder.Services.AddScoped<IDataSeeder, DataSeeder>();
 
             return builder;

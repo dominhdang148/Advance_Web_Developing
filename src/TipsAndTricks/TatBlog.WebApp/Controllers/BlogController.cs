@@ -15,7 +15,7 @@ namespace TatBlog.WebApp.Controllers
         }
 
         public async Task<IActionResult> Index(
-            [FromQuery(Name ="k")] string keyword = null,
+            [FromQuery(Name = "k")] string keyword = null,
             [FromQuery(Name = "p")] int PageNumber = 1,
             [FromQuery(Name = "ps")] int PageSize = 10)
         {
@@ -29,35 +29,69 @@ namespace TatBlog.WebApp.Controllers
 
             var postList = await _BlogRepository.GetPagedPostAsync(postQuery, PageNumber, PageSize);
 
+
             ViewBag.PostQuery = postQuery;
             return View(postList);
 
         }
 
-        public IActionResult Author(string slug)
+        public async Task<IActionResult> Author(
+            string slug = null,
+            [FromQuery(Name = "p")] int PageNumber = 1,
+            [FromQuery(Name = "ps")] int PageSize = 5)
         {
 
             var postQuery = new PostQuery()
             {
+                PublishedOnly = true,
+                AuthorSlug = slug
+            };
+            var postList = await _BlogRepository.GetPagedPostAsync(postQuery, PageNumber, PageSize);
 
+            ViewBag.Author = await _BlogRepository.GetAuthor_SlugAsync(slug);
+
+            return View(postList);
+        }
+
+        public async Task<IActionResult> Category(
+            string slug = null,
+            [FromQuery(Name = "p")] int PageNumber = 1,
+            [FromQuery(Name = "ps")] int PageSize = 5)
+        {
+            var postQuery = new PostQuery()
+            {
+                PublishedOnly = true,
+                CategorySlug = slug
+            };
+            var postList = await _BlogRepository.GetPagedPostAsync(postQuery, PageNumber, PageSize);
+
+            ViewBag.Category = await _BlogRepository.FindCategory_SlugAsync(slug);
+
+            return View(postList);
+        }
+
+
+        public async Task<IActionResult> Tag(
+            string slug = null,
+            [FromQuery(Name = "p")] int PageNumber = 1,
+            [FromQuery(Name = "ps")] int PageSize = 5)
+        {
+            var postQuery = new PostQuery()
+            {
+                PublishedOnly = true,
+                TagSlug = slug
             };
 
-            return View();
-        }
+            var postList = await _BlogRepository.GetPagedPostAsync(postQuery, PageNumber, PageSize);
 
-        public IActionResult Category(string slug)
-        {
-            return View();
+            ViewBag.Tag = await _BlogRepository.FindTag_SlugAsync(slug);
+            return View(postList);
         }
-
-
-        public IActionResult Tag(string slug)
+        public async Task<IActionResult> Post(int year, int month, int day, string slug)
         {
-            return View();
-        }
-        public IActionResult Post(int year, int month, int day, string slug)
-        {
-            return View();
+            var post = await _BlogRepository.GetPostAsync(year, month, day, slug);
+            await _BlogRepository.IncreaseViewCountAsync(post.Id);
+            return View(post);
         }
         public IActionResult Archives(int year, int month)
         {

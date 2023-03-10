@@ -1,0 +1,46 @@
+﻿@model Post
+
+@{
+   
+    ViewData["PageTitle"] = Model.Title;
+
+}
+
+<div class="p-4">
+
+    @if (Model.Published)
+    {
+        <h2 class="text-primary mb-2">
+        @Model.Title
+        </h2>
+        <h3 class="text-secondary mb-3">
+            @Model.ShortDecription
+        </h3>
+        <h5>Tác giả:  <a asp-controller="Blog"
+                            asp-action="Author"
+                            asp-route-slug="@Model.Author.UrlSlug"
+                            title="Author: @Model.Author.FullName"
+                            class="link-primary text-decoration-none">
+                            @Model.Author.FullName
+                        </a></h5>
+        <small class="text-dark mb-4">Lượt xem: @Model.ViewCount</small>
+        <p class="text-body">
+            @Model.Description
+        </p>
+    }
+    else
+    {
+         <h2 class="text-primary mb-2 align-content-center">
+        This is @Model.Author.FullName's secret
+        </h2>
+
+        <p> <a asp-controller="Blog"
+                            asp-action="Author"
+                            asp-route-slug="@Model.Author.UrlSlug"
+                            title="Author: @Model.Author.FullName"
+                            class="link-primary text-decoration-none">
+                            @Model.Author.FullName
+                        </a> still haven't ready for this post.</p>
+    }
+ 
+</div>

@@ -17,6 +17,7 @@ namespace TatBlog.Services.Blogs
         Task<Post> GetPostAsync(
             int year,
             int month,
+            int day,
             string slug,
             CancellationToken cancellationToken = default);
 
@@ -64,12 +65,11 @@ namespace TatBlog.Services.Blogs
         // Lấy và phân trang danh sách chuyên mục, kết quả trả về kiểu IPagedList<CategoryItem>
         Task<IPagedList<CategoryItem>> GetPagedCategoriesAsync(IPagingParams pagingParams, CancellationToken cancellation = default);
 
-
-        //Task<IPagedList<Post>> GetPagedPostsAsync(PostQuery condition,
-        // IPagingParams pagingParams,
-        // CancellationToken cancellationToken = default);
-
         public Task<IPagedList<Post>> GetPagedPostAsync(PostQuery condition, int pageNumber = 1, int pageSize = 10, CancellationToken cancellationToken = default);
+
+        Task<Author> GetAuthor_IdAsync(int id, CancellationToken cancellation = default);
+        Task<Author> GetAuthor_SlugAsync(string slug, CancellationToken cancellation = default);
+       
     }
 
 }

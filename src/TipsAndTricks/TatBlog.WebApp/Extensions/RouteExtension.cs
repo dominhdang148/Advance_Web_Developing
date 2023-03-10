@@ -30,5 +30,15 @@
 
             return endpoints;
         }
+
+        public static IEndpointRouteBuilder UseAuthorRoutes(this IEndpointRouteBuilder endpoints)
+        {
+           
+
+            endpoints.MapControllerRoute(name: "default",
+                pattern: "{controller=Author}/{action=Author}/{slug?}");
+
+            return endpoints;
+        }
     }
 }

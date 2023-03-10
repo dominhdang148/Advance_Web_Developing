@@ -19,4 +19,12 @@
     <ProjectReference Include="..\TatBlog.Services\TatBlog.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Blog\Author.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Blog\Author.cshtml" />
+  </ItemGroup>
+
 </Project>

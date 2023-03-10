@@ -32,7 +32,7 @@ namespace TatBlog.Services.Blogs
                 .ToListAsync(cancellation);
         }
 
-        public async Task<Post> GetPostAsync(int year, int month, string slug, CancellationToken cancellationToken = default)
+        public async Task<Post> GetPostAsync(int year, int month,int day, string slug, CancellationToken cancellationToken = default)
         {
             IQueryable<Post> postsQuery = _context.Set<Post>().Include(x => x.Category).Include(x => x.Author);
 
@@ -43,6 +43,10 @@ namespace TatBlog.Services.Blogs
             if (month > 0)
             {
                 postsQuery = postsQuery.Where(x => x.PostedDate.Month == month);
+            }
+            if (day > 0)
+            {
+                postsQuery = postsQuery.Where(x => x.PostedDate.Day == day);
             }
             if (!string.IsNullOrWhiteSpace(slug))
             {
@@ -225,12 +229,12 @@ namespace TatBlog.Services.Blogs
                 .Include(t => t.Tags)
                 .Include(a => a.Author)
                 .WhereIf(condition.AuthorId > 0, p => p.AuthorId == condition.AuthorId)
-                .WhereIf(!string.IsNullOrWhiteSpace(condition.AuthorSlug), p=>p.Author.UrlSlug==p.UrlSlug)
-                .WhereIf(!string.IsNullOrWhiteSpace(condition.AuthorSlug), p => p.UrlSlug == condition.AuthorSlug)
+                .WhereIf(!string.IsNullOrWhiteSpace(condition.AuthorSlug), p => p.Author.UrlSlug == condition.AuthorSlug)
                 .WhereIf(condition.PostId > 0, p => p.Id == condition.PostId)
                 .WhereIf(condition.CategoryId > 0, p => p.CategoryId == condition.CategoryId)
-                .WhereIf(!string.IsNullOrWhiteSpace(condition.Keyword), p=>p.Title.ToLower().Contains(condition.Keyword.ToLower()))
+                .WhereIf(!string.IsNullOrWhiteSpace(condition.Keyword), p => p.Title.ToLower().Contains(condition.Keyword.ToLower()))
                 .WhereIf(!string.IsNullOrWhiteSpace(condition.CategorySlug), p => p.Category.UrlSlug == condition.CategorySlug)
+                .WhereIf(condition.PostedDay > 0, p => p.PostedDate.Day == condition.PostedDay)
                 .WhereIf(condition.PostedYear > 0, p => p.PostedDate.Year == condition.PostedYear)
                 .WhereIf(condition.PostedMonth > 0, p => p.PostedDate.Month == condition.PostedMonth)
                 .WhereIf(condition.TagId > 0, p => p.Tags.Any(x => x.Id == condition.TagId))
@@ -246,6 +250,26 @@ namespace TatBlog.Services.Blogs
                     pageNumber, pageSize,
                     nameof(Post.PostedDate), "DESC",
                     cancellationToken);
+        }
+
+        public async Task<Author> GetAuthor_IdAsync(int id, CancellationToken cancellation = default)
+        {
+            IQueryable<Author> author = _context.Set<Author>();
+            if (id > 0)
+            {
+                author = author.Where(author => author.Id == id);
+            }
+            return await author.FirstOrDefaultAsync(cancellation);
+        }
+
+        public async Task<Author> GetAuthor_SlugAsync(string slug, CancellationToken cancellation = default)
+        {
+            IQueryable<Author> author = _context.Set<Author>();
+            if (!string.IsNullOrWhiteSpace(slug))
+            {
+                author = author.Where(author => author.UrlSlug == slug);
+            }
+            return await author.FirstOrDefaultAsync(cancellation);
         }
 
         public BlogRepository(BlogDbContext context)
