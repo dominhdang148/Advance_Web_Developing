@@ -37,10 +37,10 @@ namespace TatBlog.WebApp.Controllers
         public IActionResult Author(string slug)
         {
 
-            var postQuery=new PostQuery()
+            var postQuery = new PostQuery()
             {
 
-            }
+            };
 
             return View();
         }
