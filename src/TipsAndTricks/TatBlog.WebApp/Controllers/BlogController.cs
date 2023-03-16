@@ -22,7 +22,7 @@ namespace TatBlog.WebApp.Controllers
 
             var postQuery = new PostQuery()
             {
-                PublishedOnly = true,
+                PublishedOnly = 1,
 
                 Keyword = keyword
             };
@@ -43,7 +43,7 @@ namespace TatBlog.WebApp.Controllers
 
             var postQuery = new PostQuery()
             {
-                PublishedOnly = true,
+                PublishedOnly = 1,
                 AuthorSlug = slug
             };
             var postList = await _BlogRepository.GetPagedPostAsync(postQuery, PageNumber, PageSize);
@@ -60,7 +60,7 @@ namespace TatBlog.WebApp.Controllers
         {
             var postQuery = new PostQuery()
             {
-                PublishedOnly = true,
+                PublishedOnly = 1,
                 CategorySlug = slug
             };
             var postList = await _BlogRepository.GetPagedPostAsync(postQuery, PageNumber, PageSize);
@@ -78,7 +78,7 @@ namespace TatBlog.WebApp.Controllers
         {
             var postQuery = new PostQuery()
             {
-                PublishedOnly = true,
+                PublishedOnly = 1,
                 TagSlug = slug
             };
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "qaEQfKBggeKlIDWCKpbyxKaMycckRpCFARC50C7U/FZpM7z82/RW9kjloY92c3CX7upTBnS0UMc7D5hNiSbh7g==",
+  "dgSpecHash": "aHB0A0MeN5sK7xb/vyfb5mjC+ZVEQZnyEpaM6CR9lLJJD5SfXr2XNaYDzYwsXgq7JCB3Rvr0naLyXp2Vq/HvJg==",
   "success": true,
   "projectFilePath": "D:\\BaiTap\\C#\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.Services\\TatBlog.Services.csproj",
   "expectedPackageFiles": [
@@ -37,6 +37,7 @@
     "C:\\Users\\Maxsys\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\Maxsys\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\Maxsys\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\Maxsys\\.nuget\\packages\\sluggenerator\\2.0.2\\sluggenerator.2.0.2.nupkg.sha512",
     "C:\\Users\\Maxsys\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\Maxsys\\.nuget\\packages\\system.configuration.configurationmanager\\5.0.0\\system.configuration.configurationmanager.5.0.0.nupkg.sha512",
     "C:\\Users\\Maxsys\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",

@@ -681,6 +681,22 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
     },
     {
+      "Id": "D:\\BaiTap\\C#\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.WebApp\\wwwroot\\lib\\speakingurl\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\speakingurl"
+    },
+    {
+      "Id": "D:\\BaiTap\\C#\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.WebApp\\wwwroot\\lib\\speakingurl\\README.md",
+      "PackagePath": "staticwebassets\\lib\\speakingurl\\README.md"
+    },
+    {
+      "Id": "D:\\BaiTap\\C#\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.WebApp\\wwwroot\\lib\\speakingurl\\speakingurl.min.js",
+      "PackagePath": "staticwebassets\\lib\\speakingurl\\speakingurl.min.js"
+    },
+    {
+      "Id": "D:\\BaiTap\\C#\\Advance_Web_Developing\\src\\TipsAndTricks\\TatBlog.WebApp\\wwwroot\\uploads\\pictures\\9083dcfc08e74552908be5010a082a98.jpg",
+      "PackagePath": "staticwebassets\\uploads\\pictures\\9083dcfc08e74552908be5010a082a98.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.TatBlog.WebApp.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

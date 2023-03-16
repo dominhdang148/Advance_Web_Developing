@@ -16,7 +16,7 @@ namespace TatBlog.Core.Constants
         public string CategorySlug { get; set; }
         public string TagSlug { get; set; }
         public string AuthorSlug { get; set; }
-        public bool PublishedOnly { get; set; }
+        public int PublishedOnly { get; set; }
         public int PostedDay { get; set; }
         public int PostedYear { get; set; }
         public int PostedMonth { get; set; }
