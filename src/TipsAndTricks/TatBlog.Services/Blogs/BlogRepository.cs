@@ -396,6 +396,30 @@ namespace TatBlog.Services.Blogs
                 .ToListAsync(cancellationToken);
         }
 
+        public async Task<bool> DeletePostAsync(int id, CancellationToken cancellationToken = default)
+        {
+            var post = await _context.Set<Post>().FindAsync(id);
+
+            if (post is null) return false;
+
+            _context.Set<Post>().Remove(post);
+            var rowsCount = await _context.SaveChangesAsync(cancellationToken);
+
+            return rowsCount > 0;
+        }
+
+        public async Task<bool> TogglePublishedFlagAsync(int postId, CancellationToken cancellationToken = default)
+        {
+            var post = await _context.Set<Post>().FindAsync(postId);
+
+            if (post is null) return false;
+
+            post.Published = !post.Published;
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return post.Published;
+        }
+
         public BlogRepository(BlogDbContext context)
         {
             _context = context;

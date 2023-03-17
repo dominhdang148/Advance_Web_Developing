@@ -1,6 +1,12 @@
 ﻿@{
     ViewData["PageTitle"] = "Danh sách bài viết";
     var postsList = ViewBag.PostsList as IPagedList<Post>;
+     var stateList = new List<SelectListItem>
+    {
+        new SelectListItem("Co", "true"),
+        new SelectListItem("Khong", "false"),
+
+    };
 
 }
 
@@ -8,7 +14,7 @@
     Danh sách bài viết
 </h1>
 
-<partial name ="_PostFilterPane" model="Model"/>
+<partial name ="_PostFilterPane" model="@Model"/>
 
 @if(postsList != null && postsList.count > 0)
 {
@@ -45,15 +51,41 @@
                         @post.Category.Name
                     </td>
                     <td>
-                        @(post.Published?"Có":"Không")
+                       @* @(post.Published?"Có":"Không")*@
+                       <a 
+                            asp-area="Admin"
+                            asp-controller="Posts"
+                            asp-action="TogglePublished"
+                            asp-route-id="@post.Id"  class="btn btn-sm @(post.Published ? "btn-outline-primary" : "btn-outline-danger")">
+                            @if (post.Published)
+                            {
+                                <i class="fa fa-check"></i>
+                            }
+                            else
+                            {
+                                <i class="fa fa-times"></i>
+                            }
+                        </a>
+                    </td>
+                    <td>
+                        <a 
+                            asp-area="Admin"
+                            asp-controller="Posts"
+                            asp-action="DeletePost"
+                            asp-route-id="@post.Id" class="btn btn-sm btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+    <partial name ="_Pager" model="@postsList"/>
 }
 else{
     <h1 class="text-danger">
         Không tìm thấy bài viết nào
     </h1>
 }
+
+

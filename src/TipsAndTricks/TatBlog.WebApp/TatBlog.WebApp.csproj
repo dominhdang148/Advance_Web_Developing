@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Extensions\NewFolder\" />
     <Folder Include="Models\" />
     <Folder Include="wwwroot\fonts\" />
     <Folder Include="wwwroot\templates\emails\" />

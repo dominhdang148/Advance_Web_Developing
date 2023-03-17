@@ -19,13 +19,15 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
         private readonly IMapper _mapper;
         private readonly IMediaManager _mediaManager;
         private readonly ILogger<PostsController> _logger;
+        private readonly IValidator<PostEditModel> _postValidator;
 
-        public PostsController(IBlogRepository blogRepository, IMapper mapper, IMediaManager mediaManager, ILogger<PostsController> logger)
+        public PostsController(IBlogRepository blogRepository, IMapper mapper, IMediaManager mediaManager, ILogger<PostsController> logger, IValidator<PostEditModel> postValidator)
         {
+            _postValidator = postValidator;
             _blogRepository = blogRepository;
             _mapper = mapper;
             _mediaManager = mediaManager;
-            _logger = logger;   
+            _logger = logger;
         }
         // Phương thức gán giá trị cho các thuộc tính của 1 đối tượng PostFilterModel
 
@@ -61,17 +63,32 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
             });
         }
 
-        public async Task<IActionResult> Index(PostFilterModel model)
+        public async Task<IActionResult> Index(PostFilterModel model,
+            [FromQuery(Name = "p")] int PageNumber = 1,
+            [FromQuery(Name = "ps")] int PageSize = 10)
         {
             _logger.LogInformation("Tạo điều kiện truy vấn");
+
             var postQuery = _mapper.Map<PostQuery>(model);
 
             _logger.LogInformation("Lấy dan sách bài viết từ CSDL");
-            ViewBag.PostsList = await _blogRepository.GetPagedPostAsync(postQuery, 1, 10);
+            ViewBag.PostsList = await _blogRepository.GetPagedPostAsync(postQuery, PageNumber, PageSize);
             _logger.LogInformation("Chuẩn bị dữ liệu cho ViewModel");
-
+            ViewBag.PostQuery = postQuery;
             await PopulatedPostFilterModelAsync(model);
             return View(model);
+        }
+
+        public async Task<IActionResult> DeletePost(int id = 0)
+        {
+            await _blogRepository.DeletePostAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> TogglePublished(int id = 0)
+        {
+            await _blogRepository.TogglePublishedFlagAsync(id);
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
@@ -90,10 +107,10 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(IValidator<PostEditModel> postValidator, PostEditModel model)
+        public async Task<IActionResult> Edit (PostEditModel model)
         {
 
-            var validationResult = await postValidator.ValidateAsync(model);
+            var validationResult = await _postValidator.ValidateAsync(model);
             if (validationResult.IsValid)
             {
                 validationResult.AddToModelState(ModelState);
