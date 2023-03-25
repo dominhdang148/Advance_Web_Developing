@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using TatBlog.Core.Constants;
@@ -75,6 +76,7 @@ namespace TatBlog.Services.Blogs
         public Task<Post> CreateOrUpdatePostAsync(
         Post post, IEnumerable<string> tags,
         CancellationToken cancellationToken = default);
+
         Task<IList<AuthorItem>> GetAuthorAsync(CancellationToken cancellationToken = default);
         public Task<Tag> GetTagAsync(string slug, CancellationToken cancellationToken = default);
         public Task<IList<TagItem>> GetTagsAsync(CancellationToken cancellationToken = default);
@@ -83,6 +85,11 @@ namespace TatBlog.Services.Blogs
         Task<bool> TogglePublishedFlagAsync(
             int postId, CancellationToken cancellationToken = default);
 
+        Task<IList<Post>> GetPostsMonthYearAsync(int month, int year, CancellationToken cancellationToken = default);
+
+        Task<IList<Post>> GetRandomPostsAsync(int number, CancellationToken cancellation = default); 
+
+        Task<IList<AuthorItem>> GetPopularAuthorsAsync(int count, CancellationToken cancellationToken = default);
     }
 
 }

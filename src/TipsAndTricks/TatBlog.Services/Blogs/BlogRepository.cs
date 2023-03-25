@@ -420,6 +420,56 @@ namespace TatBlog.Services.Blogs
             return post.Published;
         }
 
+        public async Task<IList<Post>> GetPostsMonthYearAsync(int month, int year, CancellationToken cancellationToken = default)
+        {
+            IQueryable<Post> postList = _context.Set<Post>()
+                .Include(p => p.Author)
+                .Include(p => p.Category)
+                .Where(p => p.Published == true);
+
+            if (month != 0)
+            {
+                postList = postList.Where(p => p.PostedDate.Month == month);
+            }
+
+            if (year != 0)
+            {
+                postList = postList.Where(p => p.PostedDate.Year == year);
+            }
+
+            return await postList.ToListAsync(cancellationToken);
+        }
+
+        public async Task<IList<Post>> GetRandomPostsAsync(int number, CancellationToken cancellation = default)
+        {
+            return await _context.Set<Post>()
+                .Include(p => p.Author)
+                .Include(p => p.Category)
+                .Where(p => p.Published == true)
+                .OrderBy(p => Guid.NewGuid())
+                .Take(number)
+                .ToListAsync(cancellation);
+        }
+
+        public async Task<IList<AuthorItem>> GetPopularAuthorsAsync(int count, CancellationToken cancellationToken = default)
+        {
+            return await _context.Set<Author>()
+                   .OrderByDescending(a => a.Posts.Count)
+                   .Select(x => new AuthorItem()
+                   {
+                       Id = x.Id,
+                       FullName = x.FullName,
+                       Email = x.Email,
+                       ImageUrl = x.ImageUrl,
+                       JoinedDate = x.JoinedDate,
+                       Notes = x.Notes,
+                       UrlSlug = x.UrlSlug,
+                       PostCount = x.Posts.Count(p => p.Published)
+                   })
+                   .Take(count)
+                   .ToListAsync(cancellationToken);
+        }
+
         public BlogRepository(BlogDbContext context)
         {
             _context = context;

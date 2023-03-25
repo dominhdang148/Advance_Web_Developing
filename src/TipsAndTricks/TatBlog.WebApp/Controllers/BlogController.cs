@@ -52,7 +52,7 @@ namespace TatBlog.WebApp.Controllers
 
             return View(postList);
         }
-
+        
         public async Task<IActionResult> Category(
             string slug = null,
             [FromQuery(Name = "p")] int PageNumber = 1,
@@ -67,7 +67,7 @@ namespace TatBlog.WebApp.Controllers
 
             ViewBag.Category = await _BlogRepository.FindCategory_SlugAsync(slug);
 
-            return View(postList);
+            return View(postList); 
         }
 
 
@@ -76,6 +76,7 @@ namespace TatBlog.WebApp.Controllers
             [FromQuery(Name = "p")] int PageNumber = 1,
             [FromQuery(Name = "ps")] int PageSize = 5)
         {
+
             var postQuery = new PostQuery()
             {
                 PublishedOnly = 1,
@@ -87,15 +88,20 @@ namespace TatBlog.WebApp.Controllers
             ViewBag.Tag = await _BlogRepository.FindTag_SlugAsync(slug);
             return View(postList);
         }
+
+
+
+
         public async Task<IActionResult> Post(int year, int month, int day, string slug)
         {
             var post = await _BlogRepository.GetPostAsync(year, month, day, slug);
             await _BlogRepository.IncreaseViewCountAsync(post.Id);
             return View(post);
         }
-        public IActionResult Archives(int year, int month)
+        public async Task<IActionResult> Archives(int year, int month)
         {
-            return View();
+            var postList = await _BlogRepository.GetPostsMonthYearAsync(year, month);
+            return View(postList);
         }
         public IActionResult About()
         {

@@ -9,11 +9,13 @@ namespace TatBlog.WebApp.Components
 
         public CategoriesWidget(IBlogRepository blogRepository) => _blogRepository = blogRepository;
 
-        public async Task<IViewComponentResult> InvokeAsync()
-        {
-            var categories = await _blogRepository.GetCategoriesAsync();
+        public async Task<IViewComponentResult> InvokeAsync() => View(await _blogRepository.GetCategoriesAsync());
 
-            return View(categories);
-        }
+        //public async Task<IViewComponentResult> InvokeAsync()
+        //{
+        //    var categories = await _blogRepository.GetCategoriesAsync();
+
+        //    return View(categories);
+        //}
     }
 }

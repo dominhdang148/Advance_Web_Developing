@@ -1,0 +1,25 @@
+﻿@model IList<Post> 
+
+<div class="mb-4">
+    <h3 class="text-success mb-2">
+        Các bài viết nổi bật
+    </h3>
+
+    <ul class="list-group">
+        @foreach(var item in Model)
+        {
+            <li class="list-group-item">
+                <a asp-action="Post"
+                   asp-controller="Blog"
+                   asp-route-slug="@item.UrlSlug"
+                   asp-route-year="@item.PostedDate.Year"
+                   asp-route-month="@item.PostedDate.Month"
+                   asp-route-day="@item.PostedDate.Day"
+                   title="Post: @item.Title">
+                   @item.Title
+                   <span>(@item.ViewCount lượt xem)</span>
+               </a>
+            </li>
+        }
+    </ul>
+</div>

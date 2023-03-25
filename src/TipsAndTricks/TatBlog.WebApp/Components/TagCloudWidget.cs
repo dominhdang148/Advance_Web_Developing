@@ -9,11 +9,8 @@ namespace TatBlog.WebApp.Components
 
         public TagCloudWidget(IBlogRepository blogRepository) => _blogRepository = blogRepository;
 
-        public async Task<IViewComponentResult> InvokeAsync()
-        {
-            var tagCloud = await _blogRepository.GetAllTagsWithPostAsync();
+        public async Task<IViewComponentResult> InvokeAsync() => View(await _blogRepository.GetAllTagsWithPostAsync());
 
-            return View(tagCloud);
-        }
+      
     }
 }

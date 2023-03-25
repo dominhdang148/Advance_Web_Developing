@@ -23,8 +23,9 @@
         <div class="text-center my-4">
             @if (Model.HasPreviousPage)
             {
-                <a asp-controller="Blog"
-                    asp-area=""
+                <a 
+                    asp-area="Admin"
+                    asp-controller="Posts"
                     asp-action="@actionName"
                     asp-route-slug="@slug"
                     asp-route-k="@postQuery.Keyword"
@@ -47,9 +48,10 @@
 
             @if (Model.HasNextPage)
             {
-                <a asp-controller="Blog"
-                    asp-area=""
+                <a
+                    asp-area="Admin"
                     asp-action="@actionName"
+                    asp-controller="Posts"
                     asp-route-slug="@slug"
                     asp-route-k="@postQuery.Keyword"
                     asp-route-p="@(Model.PageNumber+1)"
