@@ -1,7 +1,53 @@
-﻿@{
-    ViewData["PageTitle"] = "Bảng diều khiển";
+﻿@model TatBlog.WebApp.Areas.Admin.Models.TagFilterModel
+@{
+    ViewData["PageTitle"] = "Danh sách nhãn";
+
+    var tagsList = ViewBag.TagsList as IList<TagItem>;
+
 }
 
 <h1>
-    Đây là khu vực dành cho người quản trị
+    Danh sách Tác giả
 </h1>
+
+<partial name="_TagFilterPane" model="Model"/>
+@if (tagsList !=null && tagsList.Count>0)
+{
+    <table class="table table-responsive table-striped  ">
+        <thead>
+            <tr>
+                <th>Tên nhãn</th>
+                <th>Mô tả</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tag in tagsList)
+            {
+                <tr>
+                    <td>
+                        <a asp-area="Admin"
+                           asp-controller="Authors"
+                           asp-action="Edit"
+                           asp-route-id="@tag.Id"
+                           class="text-bold">
+                           @tag.Name
+                       </a>
+                    </td>
+                    <td>
+                        @tag.Description
+                    </td>
+                    
+                    <td>
+                        <a asp-area="Admin"
+                           asp-controller="Tags"
+                           asp-action="DeleteTag"
+                           asp-route-id="@tag.Id"
+                           class="btn btn-sm btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

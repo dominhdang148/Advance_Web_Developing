@@ -32,8 +32,17 @@ namespace TatBlog.WebApp.Mapsters
 
             config.NewConfig<CategoryEditModel, Category>()
                .Ignore(dest => dest.Id);
-            
-           
+
+            //config.NewConfig<Author, AuthorItem>();
+
+            //config.NewConfig<AuthorFilterModel, AuthorQuery>();
+
+            //config.NewConfig<AuthorEditModel, Author>()
+            //    .Ignore(dest => dest.Id)
+            //    .Ignore(dest => dest.ImageUrl);
+            //config.NewConfig<Author, AuthorEditModel>()
+            //    .Ignore(dest => dest.ImageFile);
+
         }
     }
 }

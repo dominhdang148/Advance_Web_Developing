@@ -533,12 +533,12 @@ namespace TatBlog.Services.Blogs
             return category.ShowOnMenu;
         }
 
-        public async Task<IList<AuthorItem>> GetAuthor_KeywordAsync(string keyword, CancellationToken cancellationToken = default)
+        public async Task<IList<AuthorItem>> GetAuthor_KeywordAsync(AuthorQuery condition, CancellationToken cancellationToken = default)
         {
             return await _context.Set<Author>()
-                .WhereIf(!String.IsNullOrWhiteSpace(keyword), a => a.FullName.Contains(keyword))
-                .WhereIf(!String.IsNullOrWhiteSpace(keyword), a => a.Email.Contains(keyword))
-                .WhereIf(!String.IsNullOrWhiteSpace(keyword), a => a.Notes.Contains(keyword))
+                .WhereIf(!String.IsNullOrWhiteSpace(condition.Keyword), a => a.FullName.ToLower().Contains(condition.Keyword.ToLower()))
+                //.WhereIf(!String.IsNullOrWhiteSpace(keyword), a => a.Email.ToLower().Contains(keyword.ToLower()))
+                //.WhereIf(!String.IsNullOrWhiteSpace(keyword), a => a.Notes.ToLower().Contains(keyword.ToLower()))
                 .OrderBy(a => a.FullName)
                 .Select(x => new AuthorItem()
                 {
@@ -552,6 +552,33 @@ namespace TatBlog.Services.Blogs
                     PostCount = x.Posts.Count(p => p.Published)
                 })
                 .ToListAsync(cancellationToken);
+        }
+        public async Task<bool> DeleteAuthorAsync(int id, CancellationToken cancellationToken = default)
+        {
+            var author = await _context.Set<Author>().FindAsync(id);
+
+            if (author is null) return false;
+
+            _context.Set<Author>().Remove(author);
+            var rowsCount = await _context.SaveChangesAsync(cancellationToken);
+
+            return rowsCount > 0;
+        }
+
+        public async Task<IList<TagItem>> GetTags_KeywordAsync(TagQuery condition, CancellationToken cancellationToken = default)
+        {
+            return await _context.Set<Tag>()
+                 .WhereIf(!String.IsNullOrWhiteSpace(condition.Keyword), t => t.Name.ToLower().Contains(condition.Keyword.ToLower()))
+                 .OrderBy(t => t.Name)
+                 .Select(x => new TagItem()
+                 {
+                     Id = x.Id,
+                     Name=x.Name,
+                     Description=x.Description,
+                     UrlSlug = x.UrlSlug,
+                     PostCount = x.Posts.Count(p => p.Published)
+                 })
+                 .ToListAsync(cancellationToken);
         }
 
         public BlogRepository(BlogDbContext context)

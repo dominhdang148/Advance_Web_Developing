@@ -99,7 +99,11 @@ namespace TatBlog.Services.Blogs
 
         Task<bool> ToggleShowOnMenuFlagAsync(
            int categoryId, CancellationToken cancellationToken = default);
-        Task<IList<AuthorItem>> GetAuthor_KeywordAsync(string keyword, CancellationToken cancellationToken = default);
+        Task<IList<AuthorItem>> GetAuthor_KeywordAsync(AuthorQuery condition, CancellationToken cancellationToken = default);
+
+        Task<bool> DeleteAuthorAsync(int id, CancellationToken cancellationToken = default);
+
+        Task<IList<TagItem>> GetTags_KeywordAsync(TagQuery condition,  CancellationToken cancellationToken = default);
     }
 
 }
