@@ -89,20 +89,33 @@ namespace TatBlog.WebApp.Controllers
             return View(postList);
         }
 
-
-
-
         public async Task<IActionResult> Post(int year, int month, int day, string slug)
         {
             var post = await _BlogRepository.GetPostAsync(year, month, day, slug);
             await _BlogRepository.IncreaseViewCountAsync(post.Id);
             return View(post);
         }
-        public async Task<IActionResult> Archives(int year, int month)
+        public async Task<IActionResult> Archives(
+            int year, 
+            int month,
+            [FromQuery(Name = "p")] int PageNumber = 1,
+            [FromQuery(Name = "ps")] int PageSize = 5)
         {
-            var postList = await _BlogRepository.GetPostsMonthYearAsync(year, month);
+
+            var postQuery = new PostQuery()
+            {
+                PostedMonth = month,
+                PostedYear = year,
+            };
+
+            var postList = await _BlogRepository.GetPagedPostAsync(postQuery,PageNumber,PageSize);
+
+            ViewBag.Month = month;
+            ViewBag.Year = year; 
+
             return View(postList);
         }
+
         public IActionResult About()
         {
             return View();

@@ -1,0 +1,38 @@
+﻿@model TatBlog.WebApp.Areas.Admin.Models.CategoryFilterModel
+
+<form asp-area="Admin"
+      asp-controller="Categories"
+      asp-action="Index"
+      method="get"
+      class="row gy-2 gx-3 align-items-center">
+    <div class="col-auto">
+          <label class="visually-hidden" asp-for="Keyword"></label>
+          <input type="text"
+                 class="form-control"
+                 asp-for="Keyword"
+                 placeholder="Nhập từ khóa .. "/>
+      </div>
+
+
+      <div class="col-auto">
+          <button type="submit" class="btn btn-primary">Tìm/Lọc</button>
+          <a asp-area="Admin"
+             asp-controller="Categories"
+             asp-action="Index"
+             class="btn btn-danger">
+             Bỏ lọc
+         </a>
+
+          <a asp-area="Admin"
+             asp-controller="Categories"
+             asp-action="Edit"
+             class="btn btn-success">
+            Thêm mới
+         </a>
+      </div>
+      @*<div class="col-auto">
+                <label class="form-check-label" for="flexCheckDefault" asp-for="ShowOnMenu"></label>
+                <input class="form-check-input" type="checkbox" asp-for="ShowOnMenu">
+               
+      </div>*@
+</form>

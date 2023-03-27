@@ -87,9 +87,19 @@ namespace TatBlog.Services.Blogs
 
         Task<IList<Post>> GetPostsMonthYearAsync(int month, int year, CancellationToken cancellationToken = default);
 
-        Task<IList<Post>> GetRandomPostsAsync(int number, CancellationToken cancellation = default); 
+        Task<IList<Post>> GetRandomPostsAsync(int number, CancellationToken cancellation = default);
 
         Task<IList<AuthorItem>> GetPopularAuthorsAsync(int count, CancellationToken cancellationToken = default);
+
+        Task<int> CountPostByDateAsync(int month, int year, CancellationToken cancellationToken = default);
+
+        Task<IList<PostDateItem>> GetNearestMonthsAsync(CancellationToken cancellation = default);
+
+        Task<IList<CategoryItem>> GetCategoriesWithConditionAsync(CategoryQuery condition, CancellationToken cancellationToken = default);
+
+        Task<bool> ToggleShowOnMenuFlagAsync(
+           int categoryId, CancellationToken cancellationToken = default);
+        Task<IList<AuthorItem>> GetAuthor_KeywordAsync(string keyword, CancellationToken cancellationToken = default);
     }
 
 }

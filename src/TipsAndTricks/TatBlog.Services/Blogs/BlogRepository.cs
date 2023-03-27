@@ -244,6 +244,7 @@ namespace TatBlog.Services.Blogs
         }
 
 
+
         public async Task<IPagedList<Post>> GetPagedPostAsync(PostQuery condition, int pageNumber = 1, int pageSize = 10, CancellationToken cancellationToken = default)
         {
             return await FilterPost(condition)
@@ -468,6 +469,89 @@ namespace TatBlog.Services.Blogs
                    })
                    .Take(count)
                    .ToListAsync(cancellationToken);
+        }
+
+        public async Task<int> CountPostByDateAsync(int month, int year, CancellationToken cancellationToken = default)
+        {
+            var postList = await GetPostsMonthYearAsync(month, year);
+            return postList.Count;
+        }
+
+        public async Task<IList<PostDateItem>> GetNearestMonthsAsync(CancellationToken cancellation = default)
+        {
+            IList<PostDateItem> dateList = new List<PostDateItem>();
+            for (int i = 0; i > -12; i--)
+            {
+                var date = DateTime.Now.AddMonths(i);
+                int postCount = await CountPostByDateAsync(date.Month, date.Year);
+                dateList.Add(new PostDateItem()
+                {
+                    Month = date.Month,
+                    Year = date.Year,
+                    MonthName = date.ToString("MMMM"),
+                    PostCount = postCount
+                });
+            }
+            return dateList;
+
+        }
+
+
+        public IQueryable<Category> CategoryFilter(CategoryQuery condition)
+        {
+            return _context.Set<Category>()
+                .WhereIf(!String.IsNullOrWhiteSpace(condition.Keyword), c => c.Name.ToLower().Contains(condition.Keyword.ToLower()))
+                .WhereIf(condition.ShowOnMenu != 0, c => c.ShowOnMenu == (condition.ShowOnMenu == 1 ? true : false));
+        }
+
+
+        public async Task<IList<CategoryItem>> GetCategoriesWithConditionAsync(CategoryQuery condition, CancellationToken cancellationToken = default)
+        {
+            return await CategoryFilter(condition)
+               .OrderBy(c => c.Name)
+               .Select(x => new CategoryItem()
+               {
+                   Id = x.Id,
+                   Name = x.Name,
+                   Description = x.Description,
+                   ShowOnMenu = x.ShowOnMenu,
+                   UrlSlug = x.UrlSlug,
+                   PostCount = x.Posts.Count(p => p.Published),
+               })
+               .ToListAsync(cancellationToken);
+        }
+
+        public async Task<bool> ToggleShowOnMenuFlagAsync(int categoryId, CancellationToken cancellationToken = default)
+        {
+            var category = await _context.Set<Category>().FindAsync(categoryId);
+
+            if (category is null) return false;
+
+            category.ShowOnMenu = !category.ShowOnMenu;
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return category.ShowOnMenu;
+        }
+
+        public async Task<IList<AuthorItem>> GetAuthor_KeywordAsync(string keyword, CancellationToken cancellationToken = default)
+        {
+            return await _context.Set<Author>()
+                .WhereIf(!String.IsNullOrWhiteSpace(keyword), a => a.FullName.Contains(keyword))
+                .WhereIf(!String.IsNullOrWhiteSpace(keyword), a => a.Email.Contains(keyword))
+                .WhereIf(!String.IsNullOrWhiteSpace(keyword), a => a.Notes.Contains(keyword))
+                .OrderBy(a => a.FullName)
+                .Select(x => new AuthorItem()
+                {
+                    Id = x.Id,
+                    FullName = x.FullName,
+                    Email = x.Email,
+                    ImageUrl = x.ImageUrl,
+                    JoinedDate = x.JoinedDate,
+                    Notes = x.Notes,
+                    UrlSlug = x.UrlSlug,
+                    PostCount = x.Posts.Count(p => p.Published)
+                })
+                .ToListAsync(cancellationToken);
         }
 
         public BlogRepository(BlogDbContext context)

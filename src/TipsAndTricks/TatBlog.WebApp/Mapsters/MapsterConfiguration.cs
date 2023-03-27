@@ -16,6 +16,10 @@ namespace TatBlog.WebApp.Mapsters
 
             config.NewConfig<PostFilterModel, PostQuery>()
                 .Map(dest => dest.PublishedOnly, src => false);
+
+            config.NewConfig<CategoryFilterModel, CategoryQuery>()
+                .Map(dest => dest.ShowOnMenu, src => false);
+
             config.NewConfig<PostEditModel, Post>()
                 .Ignore(dest => dest.Id)
                 .Ignore(dest => dest.ImageUrl);
@@ -26,6 +30,10 @@ namespace TatBlog.WebApp.Mapsters
                 .Ignore(dest => dest.AuthorList)
                 .Ignore(dest => dest.ImageFile);
 
+            config.NewConfig<CategoryEditModel, Category>()
+               .Ignore(dest => dest.Id);
+            
+           
         }
     }
 }

@@ -1,7 +1,75 @@
-﻿@{
-    ViewData["PageTitle"] = "Bảng diều khiển";
+﻿@model TatBlog.WebApp.Areas.Admin.Models.CategoryFilterModel
+@{
+    ViewData["PageTitle"] = "Danh sách chủ đề";
+
+    var categoriesList = ViewBag.CategoriesList as IList<CategoryItem>;
 }
 
 <h1>
-    Đây là khu vực dành cho người quản trị
+    Danh sách chủ đề
 </h1>
+
+<partial name="_CategoryFilterPane" model="Model"/>
+
+@if(categoriesList!=null && categoriesList.Count>0)
+{
+    <table class="table table-responsive table-striped  ">
+        <thead>
+            <tr>
+                <th>Tên chủ đề</th>
+                <th>Mô Tả</th>
+                <th>Xuất hiện trên menu</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in categoriesList)
+            {
+                <tr>
+                    <td>
+                        <a asp-area="Admin"
+                           asp-controller="Categories"
+                           asp-action="Edit"
+                           asp-route-id="@category.Id"
+                           class="text-bold">
+                           @category.Name
+                       </a>
+                    </td>
+                    <td>
+                        @category.Description
+                    </td>
+                    <td>
+                        <a aso-area="Admin"
+                           asp-controller="Categories"
+                           asp-action="ToggleShowOnMenu"
+                           asp-route-id="@category.Id"
+                           class ="btn btn-sm @(category.ShowOnMenu?"btn-outline-primary":"btn-outline-danger")">
+                            @if (category.ShowOnMenu)
+                            {
+                                <i class="fa fa-check"></i>
+                            }
+                            else
+                            {
+                                <i class="fa fa-times"></i>
+                            }
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-area="Admin"
+                           asp-controller="Categories"
+                           asp-action="DeleteCategory"
+                           asp-route-id="@category.Id"
+                           class="btn btn-sm btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h1 class="text-danger">
+        Không tìm thấy chủ đề nào
+    </h1>
+}

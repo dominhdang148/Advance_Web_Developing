@@ -20,6 +20,11 @@
             defaults: new { controller = "Blog", action = "Author" });
 
             endpoints.MapControllerRoute(
+            name: "archives-post",
+            pattern: "blog/archives/{year:int}/{month:int}",
+            defaults: new { controller = "Blog", action = "Archives" });
+
+            endpoints.MapControllerRoute(
             name: "single-post",
             pattern: "blog/post/{year:int}/{month:int}/{day:int}/{slug}",
             defaults: new { controller = "Blog", action = "Post" });
