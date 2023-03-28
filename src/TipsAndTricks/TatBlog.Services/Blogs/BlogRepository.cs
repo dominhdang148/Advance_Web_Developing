@@ -254,44 +254,7 @@ namespace TatBlog.Services.Blogs
                     cancellationToken);
         }
 
-        public async Task<Author> GetAuthor_IdAsync(int id, CancellationToken cancellation = default)
-        {
-            IQueryable<Author> author = _context.Set<Author>();
-            if (id > 0)
-            {
-                author = author.Where(author => author.Id == id);
-            }
-            return await author.FirstOrDefaultAsync(cancellation);
-        }
-
-        public async Task<Author> GetAuthor_SlugAsync(string slug, CancellationToken cancellation = default)
-        {
-            IQueryable<Author> author = _context.Set<Author>();
-            if (!string.IsNullOrWhiteSpace(slug))
-            {
-                author = author.Where(author => author.UrlSlug == slug);
-            }
-            return await author.FirstOrDefaultAsync(cancellation);
-        }
-
-        public async Task<IList<AuthorItem>> GetAuthorAsync(CancellationToken cancellationToken = default)
-        {
-            IQueryable<Author> authors = _context.Set<Author>();
-
-
-            return await authors.OrderBy(x => x.FullName).Select(x => new AuthorItem()
-            {
-                Id = x.Id,
-                FullName = x.FullName,
-                UrlSlug = x.UrlSlug,
-                Email = x.Email,
-                ImageUrl = x.ImageUrl,
-                JoinedDate = x.JoinedDate,
-                Notes = x.Notes,
-                PostCount = x.Posts.Count(p => p.Published)
-            }).ToListAsync(cancellationToken);
-        }
-
+       
         public async Task<Post> GetPostByIdAsync(
         int postId, bool includeDetails = false,
         CancellationToken cancellationToken = default)
@@ -452,24 +415,7 @@ namespace TatBlog.Services.Blogs
                 .ToListAsync(cancellation);
         }
 
-        public async Task<IList<AuthorItem>> GetPopularAuthorsAsync(int count, CancellationToken cancellationToken = default)
-        {
-            return await _context.Set<Author>()
-                   .OrderByDescending(a => a.Posts.Count)
-                   .Select(x => new AuthorItem()
-                   {
-                       Id = x.Id,
-                       FullName = x.FullName,
-                       Email = x.Email,
-                       ImageUrl = x.ImageUrl,
-                       JoinedDate = x.JoinedDate,
-                       Notes = x.Notes,
-                       UrlSlug = x.UrlSlug,
-                       PostCount = x.Posts.Count(p => p.Published)
-                   })
-                   .Take(count)
-                   .ToListAsync(cancellationToken);
-        }
+     
 
         public async Task<int> CountPostByDateAsync(int month, int year, CancellationToken cancellationToken = default)
         {
@@ -533,37 +479,25 @@ namespace TatBlog.Services.Blogs
             return category.ShowOnMenu;
         }
 
-        public async Task<IList<AuthorItem>> GetAuthor_KeywordAsync(AuthorQuery condition, CancellationToken cancellationToken = default)
+        public async Task<IList<AuthorItem>> GetPopularAuthorsAsync(int count, CancellationToken cancellationToken = default)
         {
             return await _context.Set<Author>()
-                .WhereIf(!String.IsNullOrWhiteSpace(condition.Keyword), a => a.FullName.ToLower().Contains(condition.Keyword.ToLower()))
-                //.WhereIf(!String.IsNullOrWhiteSpace(keyword), a => a.Email.ToLower().Contains(keyword.ToLower()))
-                //.WhereIf(!String.IsNullOrWhiteSpace(keyword), a => a.Notes.ToLower().Contains(keyword.ToLower()))
-                .OrderBy(a => a.FullName)
-                .Select(x => new AuthorItem()
-                {
-                    Id = x.Id,
-                    FullName = x.FullName,
-                    Email = x.Email,
-                    ImageUrl = x.ImageUrl,
-                    JoinedDate = x.JoinedDate,
-                    Notes = x.Notes,
-                    UrlSlug = x.UrlSlug,
-                    PostCount = x.Posts.Count(p => p.Published)
-                })
-                .ToListAsync(cancellationToken);
+                   .OrderByDescending(a => a.Posts.Count)
+                   .Select(x => new AuthorItem()
+                   {
+                       Id = x.Id,
+                       FullName = x.FullName,
+                       Email = x.Email,
+                       ImageUrl = x.ImageUrl,
+                       JoinedDate = x.JoinedDate,
+                       Notes = x.Notes,
+                       UrlSlug = x.UrlSlug,
+                       PostCount = x.Posts.Count(p => p.Published)
+                   })
+                   .Take(count)
+                   .ToListAsync(cancellationToken);
         }
-        public async Task<bool> DeleteAuthorAsync(int id, CancellationToken cancellationToken = default)
-        {
-            var author = await _context.Set<Author>().FindAsync(id);
 
-            if (author is null) return false;
-
-            _context.Set<Author>().Remove(author);
-            var rowsCount = await _context.SaveChangesAsync(cancellationToken);
-
-            return rowsCount > 0;
-        }
 
         public async Task<IList<TagItem>> GetTags_KeywordAsync(TagQuery condition, CancellationToken cancellationToken = default)
         {

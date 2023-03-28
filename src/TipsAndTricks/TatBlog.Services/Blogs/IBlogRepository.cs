@@ -68,8 +68,7 @@ namespace TatBlog.Services.Blogs
 
         public Task<IPagedList<Post>> GetPagedPostAsync(PostQuery condition, int pageNumber = 1, int pageSize = 10, CancellationToken cancellationToken = default);
 
-        Task<Author> GetAuthor_IdAsync(int id, CancellationToken cancellation = default);
-        Task<Author> GetAuthor_SlugAsync(string slug, CancellationToken cancellation = default);
+        
         public Task<Post> GetPostByIdAsync(int postId, bool includeDetails = false, CancellationToken cancellationToken = default);
 
         public Task<Category> CreateOrUpdateCategoryAsync(Category category, CancellationToken cancellationToken = default);
@@ -77,7 +76,7 @@ namespace TatBlog.Services.Blogs
         Post post, IEnumerable<string> tags,
         CancellationToken cancellationToken = default);
 
-        Task<IList<AuthorItem>> GetAuthorAsync(CancellationToken cancellationToken = default);
+       
         public Task<Tag> GetTagAsync(string slug, CancellationToken cancellationToken = default);
         public Task<IList<TagItem>> GetTagsAsync(CancellationToken cancellationToken = default);
 
@@ -89,7 +88,7 @@ namespace TatBlog.Services.Blogs
 
         Task<IList<Post>> GetRandomPostsAsync(int number, CancellationToken cancellation = default);
 
-        Task<IList<AuthorItem>> GetPopularAuthorsAsync(int count, CancellationToken cancellationToken = default);
+       
 
         Task<int> CountPostByDateAsync(int month, int year, CancellationToken cancellationToken = default);
 
@@ -99,9 +98,10 @@ namespace TatBlog.Services.Blogs
 
         Task<bool> ToggleShowOnMenuFlagAsync(
            int categoryId, CancellationToken cancellationToken = default);
-        Task<IList<AuthorItem>> GetAuthor_KeywordAsync(AuthorQuery condition, CancellationToken cancellationToken = default);
 
-        Task<bool> DeleteAuthorAsync(int id, CancellationToken cancellationToken = default);
+        Task<IList<AuthorItem>> GetPopularAuthorsAsync(int count, CancellationToken cancellationToken = default);
+
+
 
         Task<IList<TagItem>> GetTags_KeywordAsync(TagQuery condition,  CancellationToken cancellationToken = default);
     }

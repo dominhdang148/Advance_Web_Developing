@@ -8,10 +8,12 @@ namespace TatBlog.WebApp.Controllers
     public class BlogController : Controller
     {
         private readonly IBlogRepository _BlogRepository;
+        private readonly IAuthorRepository _AuthorRepository;
 
-        public BlogController(IBlogRepository blogRepository)
+        public BlogController(IBlogRepository blogRepository, IAuthorRepository authorRepository)
         {
             _BlogRepository = blogRepository;
+            _AuthorRepository = authorRepository;
         }
 
         public async Task<IActionResult> Index(
@@ -48,7 +50,7 @@ namespace TatBlog.WebApp.Controllers
             };
             var postList = await _BlogRepository.GetPagedPostAsync(postQuery, PageNumber, PageSize);
 
-            ViewBag.Author = await _BlogRepository.GetAuthor_SlugAsync(slug);
+            ViewBag.Author = await _AuthorRepository.GetAuthorBySlugAsync(slug);
 
             return View(postList);
         }

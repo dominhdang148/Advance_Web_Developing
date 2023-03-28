@@ -18,12 +18,14 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
         private readonly IBlogRepository _blogRepository;
         private readonly IMapper _mapper;
         private readonly IMediaManager _mediaManager;
+        private readonly IAuthorRepository _authorRepository;
         private readonly ILogger<PostsController> _logger;
         private readonly IValidator<PostEditModel> _postValidator;
 
-        public PostsController(IBlogRepository blogRepository, IMapper mapper, IMediaManager mediaManager, ILogger<PostsController> logger, IValidator<PostEditModel> postValidator)
+        public PostsController(IBlogRepository blogRepository, IMapper mapper, IMediaManager mediaManager, ILogger<PostsController> logger, IValidator<PostEditModel> postValidator, IAuthorRepository authorRepository)
         {
             _postValidator = postValidator;
+            _authorRepository = authorRepository;
             _blogRepository = blogRepository;
             _mapper = mapper;
             _mediaManager = mediaManager;
@@ -33,7 +35,7 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
 
         private async Task PopulatedPostFilterModelAsync(PostFilterModel model)
         {
-            var authors = await _blogRepository.GetAuthorAsync();
+            var authors = await _authorRepository.GetAuthorsAsync();
             var categories = await _blogRepository.GetCategoriesAsync();
 
             model.AuthorList = authors.Select(a => new SelectListItem()
@@ -47,7 +49,7 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
 
         private async Task PopulatedPostEditModelAsync(PostEditModel model)
         {
-            var authors = await _blogRepository.GetAuthorAsync();
+            var authors = await _authorRepository.GetAuthorsAsync();
 
             var categories = await _blogRepository.GetCategoriesAsync();
 
@@ -107,7 +109,7 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit (PostEditModel model)
+        public async Task<IActionResult> Edit(PostEditModel model)
         {
 
             var validationResult = await _postValidator.ValidateAsync(model);

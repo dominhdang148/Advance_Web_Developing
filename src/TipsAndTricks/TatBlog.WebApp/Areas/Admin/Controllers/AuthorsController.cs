@@ -10,12 +10,13 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
     {
 
         private readonly IBlogRepository _blogRepository;
+        private readonly IAuthorRepository _authorRepository;
     
 
-        public AuthorsController(IBlogRepository blogRepository )
+        public AuthorsController(IBlogRepository blogRepository, IAuthorRepository authorRepository)
         {
             _blogRepository = blogRepository;
-        
+            _authorRepository = authorRepository;
         }
 
         public async Task<IActionResult> Index(AuthorFilterModel model)
@@ -25,14 +26,14 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
                 Keyword = model.Keyword,
             };
 
-            ViewBag.AuthorsList = await _blogRepository.GetAuthor_KeywordAsync(authorQuery);
+            ViewBag.AuthorsList = await _authorRepository.GetAuthor_KeywordAsync(authorQuery);
 
             return View(model);
         }
 
         public async Task<IActionResult> DeleteAuthor(int id)
         {
-            await _blogRepository.DeleteAuthorAsync(id);
+            await _authorRepository.DeleteAuthorAsync(id);
             return RedirectToAction("Index");
         }
     }
