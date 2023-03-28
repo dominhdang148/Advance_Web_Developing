@@ -1,0 +1,12 @@
+D:\BaiTap\C#\Advance_Web_Developing\src\TipsAndTricks\TatBlog.Core\bin\Debug\net7.0\TatBlog.Core.deps.json
+D:\BaiTap\C#\Advance_Web_Developing\src\TipsAndTricks\TatBlog.Core\bin\Debug\net7.0\TatBlog.Core.dll
+D:\BaiTap\C#\Advance_Web_Developing\src\TipsAndTricks\TatBlog.Core\bin\Debug\net7.0\TatBlog.Core.pdb
+D:\BaiTap\C#\Advance_Web_Developing\src\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\TatBlog.Core.csproj.AssemblyReference.cache
+D:\BaiTap\C#\Advance_Web_Developing\src\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\TatBlog.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\BaiTap\C#\Advance_Web_Developing\src\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\TatBlog.Core.AssemblyInfoInputs.cache
+D:\BaiTap\C#\Advance_Web_Developing\src\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\TatBlog.Core.AssemblyInfo.cs
+D:\BaiTap\C#\Advance_Web_Developing\src\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\TatBlog.Core.csproj.CoreCompileInputs.cache
+D:\BaiTap\C#\Advance_Web_Developing\src\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\TatBlog.Core.dll
+D:\BaiTap\C#\Advance_Web_Developing\src\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\refint\TatBlog.Core.dll
+D:\BaiTap\C#\Advance_Web_Developing\src\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\TatBlog.Core.pdb
+D:\BaiTap\C#\Advance_Web_Developing\src\TipsAndTricks\TatBlog.Core\obj\Debug\net7.0\ref\TatBlog.Core.dll
