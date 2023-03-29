@@ -13,7 +13,7 @@ namespace TatBlog.WebApi.Mapsters
             builder.Services.AddSingleton(config);
             builder.Services.AddScoped<IMapper, ServiceMapper>();
 
-            return builder
+            return builder;
         }
     }
 }
