@@ -8,7 +8,7 @@ namespace TatBlog.Core.Contracts
 {
     public interface IPagedList
     {
-        int PagedCount { get; }
+        int PageCount { get; }
         int TotalItemCount { get; }
         int PageIndex { get; }
         int PageNumber { get; }

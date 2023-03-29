@@ -254,7 +254,7 @@ namespace TatBlog.Services.Blogs
                     cancellationToken);
         }
 
-       
+
         public async Task<Post> GetPostByIdAsync(
         int postId, bool includeDetails = false,
         CancellationToken cancellationToken = default)
@@ -415,7 +415,7 @@ namespace TatBlog.Services.Blogs
                 .ToListAsync(cancellation);
         }
 
-     
+
 
         public async Task<int> CountPostByDateAsync(int month, int year, CancellationToken cancellationToken = default)
         {
@@ -507,12 +507,23 @@ namespace TatBlog.Services.Blogs
                  .Select(x => new TagItem()
                  {
                      Id = x.Id,
-                     Name=x.Name,
-                     Description=x.Description,
+                     Name = x.Name,
+                     Description = x.Description,
                      UrlSlug = x.UrlSlug,
                      PostCount = x.Posts.Count(p => p.Published)
                  })
                  .ToListAsync(cancellationToken);
+        }
+
+        public async Task<IPagedList<T>> GetPagedPostsAsync<T>(
+        PostQuery condition,
+        IPagingParams pagingParams,
+        Func<IQueryable<Post>, IQueryable<T>> mapper)
+        {
+            var posts = FilterPost(condition);
+            var projectedPosts = mapper(posts);
+
+            return await projectedPosts.ToPagedListAsync(pagingParams,default);
         }
 
         public BlogRepository(BlogDbContext context)
