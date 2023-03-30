@@ -14,6 +14,7 @@ public class AuthorRepository : IAuthorRepository
 	private readonly BlogDbContext _context;
 	private readonly IMemoryCache _memoryCache;
 
+	
 	public AuthorRepository(BlogDbContext context, IMemoryCache memoryCache)
 	{
 		_context = context;
