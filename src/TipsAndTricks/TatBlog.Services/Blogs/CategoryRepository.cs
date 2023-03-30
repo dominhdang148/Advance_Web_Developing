@@ -129,5 +129,43 @@ namespace TatBlog.Services.Blogs
         {
             return await _context.Categories.AnyAsync(x => x.Id != categoryId && x.UrlSlug == slug, cancellation);
         }
+
+
+
+
+        public async Task<bool> ToggleShowOnMenuFlagAsync(int categoryId, CancellationToken cancellationToken = default)
+        {
+            var category = await _context.Set<Category>().FindAsync(categoryId);
+
+            if (category is null) return false;
+
+            category.ShowOnMenu = !category.ShowOnMenu;
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return category.ShowOnMenu;
+        }
+        public IQueryable<Category> CategoryFilter(CategoryQuery condition)
+        {
+            return _context.Set<Category>()
+                .WhereIf(!String.IsNullOrWhiteSpace(condition.Keyword), c => c.Name.ToLower().Contains(condition.Keyword.ToLower()))
+                .WhereIf(condition.ShowOnMenu != 0, c => c.ShowOnMenu == (condition.ShowOnMenu == 1 ? true : false));
+        }
+
+
+        public async Task<IList<CategoryItem>> GetCategoriesWithConditionAsync(CategoryQuery condition, CancellationToken cancellationToken = default)
+        {
+            return await CategoryFilter(condition)
+               .OrderBy(c => c.Name)
+               .Select(x => new CategoryItem()
+               {
+                   Id = x.Id,
+                   Name = x.Name,
+                   Description = x.Description,
+                   ShowOnMenu = x.ShowOnMenu,
+                   UrlSlug = x.UrlSlug,
+                   PostCount = x.Posts.Count(p => p.Published),
+               })
+               .ToListAsync(cancellationToken);
+        }
     }
 }

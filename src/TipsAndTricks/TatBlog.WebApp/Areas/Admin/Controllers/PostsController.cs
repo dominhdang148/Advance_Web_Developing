@@ -21,8 +21,9 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
         private readonly IAuthorRepository _authorRepository;
         private readonly ILogger<PostsController> _logger;
         private readonly IValidator<PostEditModel> _postValidator;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public PostsController(IBlogRepository blogRepository, IMapper mapper, IMediaManager mediaManager, ILogger<PostsController> logger, IValidator<PostEditModel> postValidator, IAuthorRepository authorRepository)
+        public PostsController(IBlogRepository blogRepository, IMapper mapper, IMediaManager mediaManager, ILogger<PostsController> logger, IValidator<PostEditModel> postValidator, IAuthorRepository authorRepository, ICategoryRepository categoryRepository)
         {
             _postValidator = postValidator;
             _authorRepository = authorRepository;
@@ -30,13 +31,14 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
             _mapper = mapper;
             _mediaManager = mediaManager;
             _logger = logger;
+            _categoryRepository = categoryRepository;
         }
         // Phương thức gán giá trị cho các thuộc tính của 1 đối tượng PostFilterModel
 
         private async Task PopulatedPostFilterModelAsync(PostFilterModel model)
         {
             var authors = await _authorRepository.GetAuthorsAsync();
-            var categories = await _blogRepository.GetCategoriesAsync();
+            var categories = await _categoryRepository.GetCategoriesAsync();
 
             model.AuthorList = authors.Select(a => new SelectListItem()
             {
@@ -51,7 +53,7 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
         {
             var authors = await _authorRepository.GetAuthorsAsync();
 
-            var categories = await _blogRepository.GetCategoriesAsync();
+            var categories = await _categoryRepository.GetCategoriesAsync();
 
             model.AuthorList = authors.Select(a => new SelectListItem()
             {

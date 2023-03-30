@@ -39,7 +39,8 @@ namespace TatBlog.Services.Blogs
 
         // Lấy dánh sách chuyên mục và số lượng bài viết
         // nằm thuộc từng chuyên mục/ chủ đề
-        Task<IList<CategoryItem>> GetCategoriesAsync(bool showOnMenu = false, CancellationToken cancellationToken = default);
+
+        //Task<IList<CategoryItem>> GetCategoriesAsync(bool showOnMenu = false, CancellationToken cancellationToken = default);
 
         // Lấy danh sách từ khóa/thẻ và phân trang theo
         // các tham số pagingParam
@@ -53,25 +54,25 @@ namespace TatBlog.Services.Blogs
         // Xóa 1 thẻ theo ID
         Task DeleteTagByIDAsync(int id, CancellationToken cancellationToken = default);
         // Tìm một chuyên mục (Category) theo tên định danh
-        Task<Category> FindCategory_SlugAsync(string slug, CancellationToken cancellation = default);
-        // Tìm một chuyên mục theo mã số cho trước
-        Task<Category> FindCategory_IdAsync(int id, CancellationToken cancellationToken = default);
-        // Thêm hoặc cập nhật một chuyên mục (chủ đề)
-        Task Update_AddCategoryAsync(int id = 0, string name = "", string urlSlug = "", string description = "", bool showOnMenu = false, CancellationToken cancellation = default);
-        // Xóa một chuyên mục theo mã số cho trước
-        Task Delete_CategoryAsync(int id, CancellationToken cancellationToken = default);
-        // Kiểm tra tên định danh (slug) của một chuyên mục đã tồn tại hay chưa
-        Task<bool> CheckCategoryExist_Async(string urlSlug, CancellationToken cancellationToken = default);
+        //Task<Category> FindCategory_SlugAsync(string slug, CancellationToken cancellation = default);
+        //// Tìm một chuyên mục theo mã số cho trước
+        //Task<Category> FindCategory_IdAsync(int id, CancellationToken cancellationToken = default);
+        //// Thêm hoặc cập nhật một chuyên mục (chủ đề)
+        //Task Update_AddCategoryAsync(int id = 0, string name = "", string urlSlug = "", string description = "", bool showOnMenu = false, CancellationToken cancellation = default);
+        //// Xóa một chuyên mục theo mã số cho trước
+        //Task Delete_CategoryAsync(int id, CancellationToken cancellationToken = default);
+        //// Kiểm tra tên định danh (slug) của một chuyên mục đã tồn tại hay chưa
+        //Task<bool> CheckCategoryExist_Async(string urlSlug, CancellationToken cancellationToken = default);
 
-        // Lấy và phân trang danh sách chuyên mục, kết quả trả về kiểu IPagedList<CategoryItem>
-        Task<IPagedList<CategoryItem>> GetPagedCategoriesAsync(IPagingParams pagingParams, CancellationToken cancellation = default);
+        //// Lấy và phân trang danh sách chuyên mục, kết quả trả về kiểu IPagedList<CategoryItem>
+        //Task<IPagedList<CategoryItem>> GetPagedCategoriesAsync(IPagingParams pagingParams, CancellationToken cancellation = default);
 
         public Task<IPagedList<Post>> GetPagedPostAsync(PostQuery condition, int pageNumber = 1, int pageSize = 10, CancellationToken cancellationToken = default);
 
         
         public Task<Post> GetPostByIdAsync(int postId, bool includeDetails = false, CancellationToken cancellationToken = default);
 
-        public Task<Category> CreateOrUpdateCategoryAsync(Category category, CancellationToken cancellationToken = default);
+        //public Task<Category> CreateOrUpdateCategoryAsync(Category category, CancellationToken cancellationToken = default);
         public Task<Post> CreateOrUpdatePostAsync(
         Post post, IEnumerable<string> tags,
         CancellationToken cancellationToken = default);
@@ -94,10 +95,10 @@ namespace TatBlog.Services.Blogs
 
         Task<IList<PostDateItem>> GetNearestMonthsAsync(CancellationToken cancellation = default);
 
-        Task<IList<CategoryItem>> GetCategoriesWithConditionAsync(CategoryQuery condition, CancellationToken cancellationToken = default);
+        //Task<IList<CategoryItem>> GetCategoriesWithConditionAsync(CategoryQuery condition, CancellationToken cancellationToken = default);
 
-        Task<bool> ToggleShowOnMenuFlagAsync(
-           int categoryId, CancellationToken cancellationToken = default);
+        //Task<bool> ToggleShowOnMenuFlagAsync(
+        //   int categoryId, CancellationToken cancellationToken = default);
 
         Task<IList<AuthorItem>> GetPopularAuthorsAsync(int count, CancellationToken cancellationToken = default);
 

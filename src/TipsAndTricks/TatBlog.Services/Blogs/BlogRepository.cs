@@ -72,26 +72,6 @@ namespace TatBlog.Services.Blogs
                 .AnyAsync(x => x.Id != postID && x.UrlSlug == slug, cancellationToken);
         }
 
-        public async Task<IList<CategoryItem>> GetCategoriesAsync(bool showOnMenu = false, CancellationToken cancellationToken = default)
-        {
-            IQueryable<Category> categories = _context.Set<Category>();
-
-            if (showOnMenu)
-            {
-                categories = categories.Where(x => x.ShowOnMenu);
-            }
-
-            return await categories.OrderBy(x => x.Name).Select(x => new CategoryItem()
-            {
-                Id = x.Id,
-                Name = x.Name,
-                UrlSlug = x.UrlSlug,
-                Description = x.Description,
-                ShowOnMenu = x.ShowOnMenu,
-                PostCount = x.Posts.Count(p => p.Published)
-            }).ToListAsync(cancellationToken);
-        }
-
         public async Task<IPagedList<TagItem>> GetPagedTagsAsync(IPagingParams pagingParams, CancellationToken cancellationToken)
         {
             var tagQuery = _context.Set<Tag>()
@@ -135,94 +115,119 @@ namespace TatBlog.Services.Blogs
             await _context.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<Category> FindCategory_SlugAsync(string slug, CancellationToken cancellation = default)
-        {
-            IQueryable<Category> categories = _context.Set<Category>();
-            if (!string.IsNullOrWhiteSpace(slug))
-            {
-                categories = categories.Where(t => t.UrlSlug == slug);
-            }
-            return await categories.FirstOrDefaultAsync(cancellation);
-        }
 
-        public async Task<Category> FindCategory_IdAsync(int id, CancellationToken cancellationToken = default)
-        {
-            IQueryable<Category> categories = _context.Set<Category>();
-            if (id != 0)
-            {
-                categories = categories.Where(t => t.Id == id);
-            }
-            return await categories.FirstOrDefaultAsync(cancellationToken);
-        }
+        //public async Task<IList<CategoryItem>> GetCategoriesAsync(bool showOnMenu = false, CancellationToken cancellationToken = default)
+        //{
+        //    IQueryable<Category> categories = _context.Set<Category>();
 
-        public async Task Update_AddCategoryAsync(int id = 0, string name = "", string urlSlug = "", string description = "", bool showOnMenu = false, CancellationToken cancellation = default)
-        {
-            var category = _context.Set<Category>().FirstOrDefault(c => c.Id == id);
-            if (category != null)
-            {
-                if (!string.IsNullOrWhiteSpace(name))
-                {
-                    category.Name = name;
-                }
-                if (!string.IsNullOrWhiteSpace(urlSlug))
-                {
-                    category.UrlSlug = urlSlug;
-                }
-                if (!string.IsNullOrWhiteSpace(description))
-                {
-                    category.Description = description;
-                }
-                category.ShowOnMenu = showOnMenu;
-            }
+        //    if (showOnMenu)
+        //    {
+        //        categories = categories.Where(x => x.ShowOnMenu);
+        //    }
 
-            else
-            {
-                if (!(string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(urlSlug)))
-                {
-                    _context.Add(new Category()
-                    {
-                        Name = name,
-                        UrlSlug = urlSlug,
-                        Description = description,
-                        ShowOnMenu = showOnMenu
-                    });
-                }
+        //    return await categories.OrderBy(x => x.Name).Select(x => new CategoryItem()
+        //    {
+        //        Id = x.Id,
+        //        Name = x.Name,
+        //        UrlSlug = x.UrlSlug,
+        //        Description = x.Description,
+        //        ShowOnMenu = x.ShowOnMenu,
+        //        PostCount = x.Posts.Count(p => p.Published)
+        //    }).ToListAsync(cancellationToken);
+        //}
 
-            }
 
-            await _context.SaveChangesAsync(cancellation);
-        }
+        //public async Task<Category> FindCategory_SlugAsync(string slug, CancellationToken cancellation = default)
+        //{
+        //    IQueryable<Category> categories = _context.Set<Category>();
+        //    if (!string.IsNullOrWhiteSpace(slug))
+        //    {
+        //        categories = categories.Where(t => t.UrlSlug == slug);
+        //    }
+        //    return await categories.FirstOrDefaultAsync(cancellation);
+        //}
 
-        public async Task Delete_CategoryAsync(int id, CancellationToken cancellationToken = default)
-        {
-            var category = new Category()
-            {
-                Id = id
-            };
-            _context.Remove(category);
-            await _context.SaveChangesAsync(cancellationToken);
-        }
+        //public async Task<Category> FindCategory_IdAsync(int id, CancellationToken cancellationToken = default)
+        //{
+        //    IQueryable<Category> categories = _context.Set<Category>();
+        //    if (id != 0)
+        //    {
+        //        categories = categories.Where(t => t.Id == id);
+        //    }
+        //    return await categories.FirstOrDefaultAsync(cancellationToken);
+        //}
 
-        public async Task<bool> CheckCategoryExist_Async(string urlSlug, CancellationToken cancellationToken = default)
-        {
-            return await _context.Set<Category>()
-                .AnyAsync(x => x.UrlSlug == urlSlug, cancellationToken);
-        }
+        //public async Task Update_AddCategoryAsync(int id = 0, string name = "", string urlSlug = "", string description = "", bool showOnMenu = false, CancellationToken cancellation = default)
+        //{
+        //    var category = _context.Set<Category>().FirstOrDefault(c => c.Id == id);
+        //    if (category != null)
+        //    {
+        //        if (!string.IsNullOrWhiteSpace(name))
+        //        {
+        //            category.Name = name;
+        //        }
+        //        if (!string.IsNullOrWhiteSpace(urlSlug))
+        //        {
+        //            category.UrlSlug = urlSlug;
+        //        }
+        //        if (!string.IsNullOrWhiteSpace(description))
+        //        {
+        //            category.Description = description;
+        //        }
+        //        category.ShowOnMenu = showOnMenu;
+        //    }
 
-        public async Task<IPagedList<CategoryItem>> GetPagedCategoriesAsync(IPagingParams pagingParams, CancellationToken cancellation = default)
-        {
-            var categoryQuery = _context.Set<Category>()
-                .Select(x => new CategoryItem()
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Description = x.Description,
-                    ShowOnMenu = x.ShowOnMenu,
-                    UrlSlug = x.UrlSlug,
-                    PostCount = x.Posts.Count(p => p.Published),
-                });
-            return await categoryQuery.ToPagedListAsync(pagingParams, cancellation);
-        }
+        //    else
+        //    {
+        //        if (!(string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(urlSlug)))
+        //        {
+        //            _context.Add(new Category()
+        //            {
+        //                Name = name,
+        //                UrlSlug = urlSlug,
+        //                Description = description,
+        //                ShowOnMenu = showOnMenu
+        //            });
+        //        }
+
+        //    }
+
+        //    await _context.SaveChangesAsync(cancellation);
+        //}
+
+        //public async Task Delete_CategoryAsync(int id, CancellationToken cancellationToken = default)
+        //{
+        //    var category = new Category()
+        //    {
+        //        Id = id
+        //    };
+        //    _context.Remove(category);
+        //    await _context.SaveChangesAsync(cancellationToken);
+        //}
+
+        //public async Task<bool> CheckCategoryExist_Async(string urlSlug, CancellationToken cancellationToken = default)
+        //{
+        //    return await _context.Set<Category>()
+        //        .AnyAsync(x => x.UrlSlug == urlSlug, cancellationToken);
+        //}
+
+        //public async Task<IPagedList<CategoryItem>> GetPagedCategoriesAsync(IPagingParams pagingParams, CancellationToken cancellation = default)
+        //{
+        //    var categoryQuery = _context.Set<Category>()
+        //        .Select(x => new CategoryItem()
+        //        {
+        //            Id = x.Id,
+        //            Name = x.Name,
+        //            Description = x.Description,
+        //            ShowOnMenu = x.ShowOnMenu,
+        //            UrlSlug = x.UrlSlug,
+        //            PostCount = x.Posts.Count(p => p.Published),
+        //        });
+        //    return await categoryQuery.ToPagedListAsync(pagingParams, cancellation);
+        //}
+        
+        
+        
         public IQueryable<Post> FilterPost(PostQuery condition)
         {
             return _context.Set<Post>()
@@ -242,9 +247,6 @@ namespace TatBlog.Services.Blogs
                 .WhereIf(!string.IsNullOrWhiteSpace(condition.TagSlug), p => p.Tags.Any(x => x.UrlSlug == condition.TagSlug))
                 .WhereIf(condition.PublishedOnly != 0, p => p.Published == (condition.PublishedOnly == 1 ? true : false));
         }
-
-
-
         public async Task<IPagedList<Post>> GetPagedPostAsync(PostQuery condition, int pageNumber = 1, int pageSize = 10, CancellationToken cancellationToken = default)
         {
             return await FilterPost(condition)
@@ -271,22 +273,22 @@ namespace TatBlog.Services.Blogs
                 .FirstOrDefaultAsync(x => x.Id == postId, cancellationToken);
         }
 
-        public async Task<Category> CreateOrUpdateCategoryAsync(
-        Category category, CancellationToken cancellationToken = default)
-        {
-            if (category.Id > 0)
-            {
-                _context.Set<Category>().Update(category);
-            }
-            else
-            {
-                _context.Set<Category>().Add(category);
-            }
+        //public async Task<Category> CreateOrUpdateCategoryAsync(
+        //Category category, CancellationToken cancellationToken = default)
+        //{
+        //    if (category.Id > 0)
+        //    {
+        //        _context.Set<Category>().Update(category);
+        //    }
+        //    else
+        //    {
+        //        _context.Set<Category>().Add(category);
+        //    }
 
-            await _context.SaveChangesAsync(cancellationToken);
+        //    await _context.SaveChangesAsync(cancellationToken);
 
-            return category;
-        }
+        //    return category;
+        //}
 
         public async Task<Post> CreateOrUpdatePostAsync(
         Post post, IEnumerable<string> tags,
@@ -443,41 +445,41 @@ namespace TatBlog.Services.Blogs
         }
 
 
-        public IQueryable<Category> CategoryFilter(CategoryQuery condition)
-        {
-            return _context.Set<Category>()
-                .WhereIf(!String.IsNullOrWhiteSpace(condition.Keyword), c => c.Name.ToLower().Contains(condition.Keyword.ToLower()))
-                .WhereIf(condition.ShowOnMenu != 0, c => c.ShowOnMenu == (condition.ShowOnMenu == 1 ? true : false));
-        }
+        //public IQueryable<Category> CategoryFilter(CategoryQuery condition)
+        //{
+        //    return _context.Set<Category>()
+        //        .WhereIf(!String.IsNullOrWhiteSpace(condition.Keyword), c => c.Name.ToLower().Contains(condition.Keyword.ToLower()))
+        //        .WhereIf(condition.ShowOnMenu != 0, c => c.ShowOnMenu == (condition.ShowOnMenu == 1 ? true : false));
+        //}
 
 
-        public async Task<IList<CategoryItem>> GetCategoriesWithConditionAsync(CategoryQuery condition, CancellationToken cancellationToken = default)
-        {
-            return await CategoryFilter(condition)
-               .OrderBy(c => c.Name)
-               .Select(x => new CategoryItem()
-               {
-                   Id = x.Id,
-                   Name = x.Name,
-                   Description = x.Description,
-                   ShowOnMenu = x.ShowOnMenu,
-                   UrlSlug = x.UrlSlug,
-                   PostCount = x.Posts.Count(p => p.Published),
-               })
-               .ToListAsync(cancellationToken);
-        }
+        //public async Task<IList<CategoryItem>> GetCategoriesWithConditionAsync(CategoryQuery condition, CancellationToken cancellationToken = default)
+        //{
+        //    return await CategoryFilter(condition)
+        //       .OrderBy(c => c.Name)
+        //       .Select(x => new CategoryItem()
+        //       {
+        //           Id = x.Id,
+        //           Name = x.Name,
+        //           Description = x.Description,
+        //           ShowOnMenu = x.ShowOnMenu,
+        //           UrlSlug = x.UrlSlug,
+        //           PostCount = x.Posts.Count(p => p.Published),
+        //       })
+        //       .ToListAsync(cancellationToken);
+        //}
 
-        public async Task<bool> ToggleShowOnMenuFlagAsync(int categoryId, CancellationToken cancellationToken = default)
-        {
-            var category = await _context.Set<Category>().FindAsync(categoryId);
+        //public async Task<bool> ToggleShowOnMenuFlagAsync(int categoryId, CancellationToken cancellationToken = default)
+        //{
+        //    var category = await _context.Set<Category>().FindAsync(categoryId);
 
-            if (category is null) return false;
+        //    if (category is null) return false;
 
-            category.ShowOnMenu = !category.ShowOnMenu;
-            await _context.SaveChangesAsync(cancellationToken);
+        //    category.ShowOnMenu = !category.ShowOnMenu;
+        //    await _context.SaveChangesAsync(cancellationToken);
 
-            return category.ShowOnMenu;
-        }
+        //    return category.ShowOnMenu;
+        //}
 
         public async Task<IList<AuthorItem>> GetPopularAuthorsAsync(int count, CancellationToken cancellationToken = default)
         {

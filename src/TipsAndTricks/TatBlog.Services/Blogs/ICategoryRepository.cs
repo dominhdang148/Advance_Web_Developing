@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using TatBlog.Core.Constants;
 using TatBlog.Core.Contracts;
 using TatBlog.Core.DTO;
 using TatBlog.Core.Entities;
@@ -38,6 +39,13 @@ namespace TatBlog.Services.Blogs
             int categoryId,
             string slug,
             CancellationToken cancellation = default);
+         
+        
+        
+        
+        Task<bool> ToggleShowOnMenuFlagAsync(
+           int categoryId, CancellationToken cancellationToken = default);
+        Task<IList<CategoryItem>> GetCategoriesWithConditionAsync(CategoryQuery condition, CancellationToken cancellationToken = default);
 
     }
 }
