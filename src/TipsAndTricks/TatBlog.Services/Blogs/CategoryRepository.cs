@@ -93,7 +93,10 @@ namespace TatBlog.Services.Blogs
                 .FirstOrDefaultAsync(c => c.UrlSlug == slug, cancellationToken);
         }
 
-        public async Task<IPagedList<CategoryItem>> GetPagedCategoriesAsync(IPagingParams pagingParams, string name = null, CancellationToken cancellationToken = default)
+        public async Task<IPagedList<CategoryItem>> GetPagedCategoriesAsync(
+            IPagingParams pagingParams, 
+            string name = null, 
+            CancellationToken cancellationToken = default)
         {
             return await _context.Set<Category>()
                 .AsNoTracking()

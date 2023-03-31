@@ -10,12 +10,14 @@ namespace TatBlog.WebApp.Controllers
         private readonly IBlogRepository _BlogRepository;
         private readonly IAuthorRepository _AuthorRepository;
         private readonly ICategoryRepository _CategoryRepository;
+        private readonly ITagRepository _TagRepository;
 
-        public BlogController(IBlogRepository blogRepository, IAuthorRepository authorRepository, ICategoryRepository categoryRepository)
+        public BlogController(IBlogRepository blogRepository, IAuthorRepository authorRepository, ICategoryRepository categoryRepository, ITagRepository tagRepository)
         {
             _BlogRepository = blogRepository;
             _AuthorRepository = authorRepository;
             _CategoryRepository = categoryRepository;
+            _TagRepository = tagRepository;
         }
 
         public async Task<IActionResult> Index(
@@ -56,7 +58,7 @@ namespace TatBlog.WebApp.Controllers
 
             return View(postList);
         }
-        
+
         public async Task<IActionResult> Category(
             string slug = null,
             [FromQuery(Name = "p")] int PageNumber = 1,
@@ -71,7 +73,7 @@ namespace TatBlog.WebApp.Controllers
 
             ViewBag.Category = await _CategoryRepository.GetCategoryBySlugAsync(slug);
 
-            return View(postList); 
+            return View(postList);
         }
 
 
@@ -89,7 +91,7 @@ namespace TatBlog.WebApp.Controllers
 
             var postList = await _BlogRepository.GetPagedPostAsync(postQuery, PageNumber, PageSize);
 
-            ViewBag.Tag = await _BlogRepository.FindTag_SlugAsync(slug);
+            ViewBag.Tag = await _TagRepository.GetTagBySlugAsync(slug);
             return View(postList);
         }
 
@@ -100,7 +102,7 @@ namespace TatBlog.WebApp.Controllers
             return View(post);
         }
         public async Task<IActionResult> Archives(
-            int year, 
+            int year,
             int month,
             [FromQuery(Name = "p")] int PageNumber = 1,
             [FromQuery(Name = "ps")] int PageSize = 5)
@@ -112,10 +114,10 @@ namespace TatBlog.WebApp.Controllers
                 PostedYear = year,
             };
 
-            var postList = await _BlogRepository.GetPagedPostAsync(postQuery,PageNumber,PageSize);
+            var postList = await _BlogRepository.GetPagedPostAsync(postQuery, PageNumber, PageSize);
 
             ViewBag.Month = month;
-            ViewBag.Year = year; 
+            ViewBag.Year = year;
 
             return View(postList);
         }

@@ -74,7 +74,7 @@ public class AuthorRepository : IAuthorRepository
 			.ToListAsync(cancellationToken);
 	}
 
-	public async Task<IPagedList<AuthorItem>> GetPagedAuthorsAsync(
+public async Task<IPagedList<AuthorItem>> GetPagedAuthorsAsync(
 		IPagingParams pagingParams,
 		string name = null,
 		CancellationToken cancellationToken = default)

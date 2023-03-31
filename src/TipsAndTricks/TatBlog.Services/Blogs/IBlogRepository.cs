@@ -44,15 +44,15 @@ namespace TatBlog.Services.Blogs
 
         // Lấy danh sách từ khóa/thẻ và phân trang theo
         // các tham số pagingParam
-        Task<IPagedList<TagItem>> GetPagedTagsAsync(IPagingParams pagingParams, CancellationToken cancellationToken = default);
+        //Task<IPagedList<TagItem>> GetPagedTagsAsync(IPagingParams pagingParams, CancellationToken cancellationToken = default);
 
         // Tìm một thẻ theo tên định danh slug
-        Task<Tag> FindTag_SlugAsync(string slug, CancellationToken cancellationToken = default);
+        // Task<Tag> FindTag_SlugAsync(string slug, CancellationToken cancellationToken = default);
 
         // Lấy danh sách các thẻ
-        Task<IList<TagItem>> GetAllTagsWithPostAsync(CancellationToken cancellationToken = default);
+        // Task<IList<TagItem>> GetAllTagsWithPostAsync(CancellationToken cancellationToken = default);
         // Xóa 1 thẻ theo ID
-        Task DeleteTagByIDAsync(int id, CancellationToken cancellationToken = default);
+        // Task DeleteTagByIDAsync(int id, CancellationToken cancellationToken = default);
         // Tìm một chuyên mục (Category) theo tên định danh
         //Task<Category> FindCategory_SlugAsync(string slug, CancellationToken cancellation = default);
         //// Tìm một chuyên mục theo mã số cho trước
@@ -78,8 +78,8 @@ namespace TatBlog.Services.Blogs
         CancellationToken cancellationToken = default);
 
        
-        public Task<Tag> GetTagAsync(string slug, CancellationToken cancellationToken = default);
-        public Task<IList<TagItem>> GetTagsAsync(CancellationToken cancellationToken = default);
+        // public Task<Tag> GetTagAsync(string slug, CancellationToken cancellationToken = default);
+        // public Task<IList<TagItem>> GetTagsAsync(CancellationToken cancellationToken = default);
 
         Task<bool> DeletePostAsync(int id, CancellationToken cancellationToken = default);
         Task<bool> TogglePublishedFlagAsync(
@@ -104,7 +104,7 @@ namespace TatBlog.Services.Blogs
 
 
 
-        Task<IList<TagItem>> GetTags_KeywordAsync(TagQuery condition,  CancellationToken cancellationToken = default);
+        //Task<IList<TagItem>> GetTags_KeywordAsync(TagQuery condition,  CancellationToken cancellationToken = default);
 
         Task<IPagedList<T>> GetPagedPostsAsync<T>(
         PostQuery condition,
