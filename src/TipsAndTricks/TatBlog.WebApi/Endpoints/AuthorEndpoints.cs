@@ -27,6 +27,7 @@ namespace TatBlog.WebApi.Endpoints
                 .WithName("GetAuthorById")
                 .Produces<AuthorItem>()
                 .Produces(404);
+
             routeGroupBuilder.MapGet("/best/{limit:int}", GetBestAuthor)
                 .WithName("GetBestAuthor")
                 .Produces<IList<AuthorItem>>();
@@ -127,7 +128,7 @@ namespace TatBlog.WebApi.Endpoints
             return Results.Ok(paginationResult);
 
         }
-
+         
         private static async Task<IResult> AddAuthor(
             AuthorEditModel model,
             IAuthorRepository authorRepository,

@@ -70,14 +70,14 @@ namespace TatBlog.Services.Blogs
         {
             return await _context.Set<Category>()
                 .OrderBy(c => c.Name)
-                .Select(c => new CategoryItem()
+                .Select(x => new CategoryItem()
                 {
-                    Id = c.Id,
-                    Name = c.Name,
-                    Description = c.Description,
-                    UrlSlug = c.UrlSlug,
-                    ShowOnMenu = c.ShowOnMenu,
-                    PostCount = c.Posts.Count(p => p.Published)
+                    Id = x.Id,
+                    Name = x.Name,
+                    Description = x.Description,
+                    UrlSlug = x.UrlSlug,
+                    ShowOnMenu = x.ShowOnMenu,
+                    PostCount = x.Posts.Count(p => p.Published)
                 })
                 .ToListAsync();
         }
