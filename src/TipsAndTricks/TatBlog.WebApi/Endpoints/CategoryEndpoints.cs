@@ -1,6 +1,7 @@
 ﻿using Mapster;
 using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 using TatBlog.Core.Collections;
 using TatBlog.Core.Constants;
 using TatBlog.Core.DTO;
@@ -19,13 +20,13 @@ namespace TatBlog.WebApi.Endpoints
 
             routeGroupBuilder.MapGet("/", GetCategories)
                 .WithName("GetCategories")
-                .Produces<PaginationResult<CategoryItem>>();
+                .Produces<ApiResponse<PaginationResult<CategoryItem>>>();
 
 
             routeGroupBuilder.MapGet("/{id:int}", GetGategoryId)
                 .WithName("GetCategoryById")
-                .Produces<CategoryItem>()
-                .Produces(404);
+                .Produces<ApiResponse<CategoryItem>>();
+                
 
             routeGroupBuilder.MapGet("/{slug:regex(^[a-z0-9_-]+$)}/posts", GetPostsByCategorySlug)
                 .WithName("GetPostsByCategorySlug")
@@ -53,13 +54,12 @@ namespace TatBlog.WebApi.Endpoints
         }
 
         private static async Task<IResult> GetCategories(
-            [AsParameters] AuthorFilterModel model,
+            [AsParameters] CategoryFilterModel model,
             ICategoryRepository categoryRepository)
         {
             var categoriesList = await categoryRepository.GetPagedCategoriesAsync(model, model.Name);
-
             var paginationResult = new PaginationResult<CategoryItem>(categoriesList);
-            return Results.Ok(paginationResult);
+            return Results.Ok(ApiResponse.Success(paginationResult));
         }
 
         private static async Task<IResult> GetGategoryId(
@@ -69,8 +69,8 @@ namespace TatBlog.WebApi.Endpoints
         {
             var category = await categoryRepository.GetCachedCategoryByIdAsync(id);
             return category == null
-                ? Results.NotFound($"")
-                : Results.Ok(mapper.Map<CategoryItem>(category));
+                ? Results.Ok(ApiResponse.Fail(HttpStatusCode.NotFound,"Không tìm thấy danh mục"))
+                : Results.Ok(ApiResponse.Success(mapper.Map<CategoryItem>(category)));
         }
 
         private static async Task<IResult> GetPostsByCategorySlug(
