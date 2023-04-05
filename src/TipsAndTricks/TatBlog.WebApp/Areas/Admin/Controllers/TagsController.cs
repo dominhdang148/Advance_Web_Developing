@@ -8,12 +8,13 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
     public class TagsController: Controller
     {
         private readonly IBlogRepository _blogRepository;
+        private readonly ITagRepository _tagRepository;
 
 
-        public TagsController(IBlogRepository blogRepository)
+        public TagsController(IBlogRepository blogRepository, ITagRepository tagRepository)
         {
             _blogRepository = blogRepository;
-
+            _tagRepository = tagRepository;
         }
 
         public async Task<IActionResult> Index(TagFilterModel model)
@@ -22,14 +23,13 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
             {
                 Keyword = model.Keyword
             };
-
-            ViewBag.TagsList= await _blogRepository.GetTags_KeywordAsync(tagQuery);
+            ViewBag.TagsList= await _tagRepository.GetTags_KeywordAsync(tagQuery);
             return View(model);
         }
 
         public async Task<IActionResult> DeleteTag(int id)
         {
-            await _blogRepository.DeleteTagByIDAsync(id);
+            await _tagRepository.DeleteTagAsync(id);
 
             return RedirectToAction("Index");
         }

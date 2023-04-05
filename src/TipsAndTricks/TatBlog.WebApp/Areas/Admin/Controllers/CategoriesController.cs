@@ -10,11 +10,13 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
     public class CategoriesController : Controller
     {
         private readonly IBlogRepository _blogRepository;
+        private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
-        public CategoriesController(IBlogRepository blogRepository, IMapper mapper)
+        public CategoriesController(IBlogRepository blogRepository, IMapper mapper, ICategoryRepository categoryRepository)
         {
             _blogRepository = blogRepository;
             _mapper = mapper;
+            _categoryRepository = categoryRepository;
         }
 
         public async Task<IActionResult> Index(CategoryFilterModel model)
@@ -28,7 +30,7 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
 
             var query = _mapper.Map<CategoryQuery>(model);
 
-            ViewBag.CategoriesList = await _blogRepository.GetCategoriesWithConditionAsync(query);
+            ViewBag.CategoriesList = await _categoryRepository.GetCategoriesWithConditionAsync(query);
 
             return View(model);
         }
@@ -37,7 +39,7 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(int id = 0)
         {
             var category = id > 0 ?
-                await _blogRepository.FindCategory_IdAsync(id)
+                await _categoryRepository.GetCategoryByIdAsync(id)
                 : null;
 
             var model = category == null
@@ -55,7 +57,7 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
             }
 
             var category = model.Id > 0
-                ? await _blogRepository.FindCategory_IdAsync(model.Id) : null;
+                ? await _categoryRepository.GetCategoryByIdAsync(model.Id) : null;
 
             if (category == null)
             {
@@ -67,19 +69,19 @@ namespace TatBlog.WebApp.Areas.Admin.Controllers
             {
                 _mapper.Map(model, category);
             }
-            await _blogRepository.CreateOrUpdateCategoryAsync(category);
+            await _categoryRepository.AddOrUpdateCategoryAsync(category);
             return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> DeleteCategory(int id = 0)
         {
-            await _blogRepository.Delete_CategoryAsync(id); 
+            await _categoryRepository.DeleteCategoryAsync(id); 
             return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> ToggleShowOnMenu(int id = 0)
         {
-            await _blogRepository.ToggleShowOnMenuFlagAsync(id);
+            await _categoryRepository.ToggleShowOnMenuFlagAsync(id);
             return RedirectToAction(nameof(Index));
         }
     }

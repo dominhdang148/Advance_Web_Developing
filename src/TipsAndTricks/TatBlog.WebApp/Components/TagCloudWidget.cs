@@ -5,11 +5,11 @@ namespace TatBlog.WebApp.Components
 {
     public class TagCloudWidget : ViewComponent
     {
-        private readonly IBlogRepository _blogRepository;
+        private readonly ITagRepository _tagRepository;
 
-        public TagCloudWidget(IBlogRepository blogRepository) => _blogRepository = blogRepository;
+        public TagCloudWidget(ITagRepository tagRepository) => _tagRepository = tagRepository;
 
-        public async Task<IViewComponentResult> InvokeAsync() => View(await _blogRepository.GetAllTagsWithPostAsync());
+        public async Task<IViewComponentResult> InvokeAsync() => View(await _tagRepository.GetTagsAsync());
 
       
     }

@@ -8,7 +8,6 @@ using TatBlog.Core.DTO;
 using TatBlog.Core.Entities;
 using TatBlog.Services.Blogs;
 using TatBlog.Services.Media;
-using TatBlog.WebApi.Extensions;
 using TatBlog.WebApi.Filters;
 using TatBlog.WebApi.Models;
 
@@ -28,6 +27,7 @@ namespace TatBlog.WebApi.Endpoints
                 .WithName("GetAuthorById")
                 .Produces<AuthorItem>()
                 .Produces(404);
+
             routeGroupBuilder.MapGet("/best/{limit:int}", GetBestAuthor)
                 .WithName("GetBestAuthor")
                 .Produces<IList<AuthorItem>>();
@@ -42,7 +42,7 @@ namespace TatBlog.WebApi.Endpoints
                 .Produces(201)
                 .Produces(400)
                 .Produces(409);
-
+            
             routeGroupBuilder.MapPost("/{id:int}/avatar", SetAuthorPicture)
                 .WithName("SetAuthorPicture")
                 .Accepts<IFormFile>("multipart/form-data")
@@ -128,7 +128,7 @@ namespace TatBlog.WebApi.Endpoints
             return Results.Ok(paginationResult);
 
         }
-
+         
         private static async Task<IResult> AddAuthor(
             AuthorEditModel model,
             IAuthorRepository authorRepository,
@@ -204,7 +204,7 @@ namespace TatBlog.WebApi.Endpoints
         {
 
             var authorsList = await blogRepository.GetPopularAuthorsAsync(limit);
-            return Results.Ok(mapper.Map<IList<AuthorItem>>(authorsList));
+            return Results.Ok(mapper.Map<IList<AuthorItem> >(authorsList));
         }
     }
 }

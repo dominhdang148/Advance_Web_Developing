@@ -5,11 +5,11 @@ namespace TatBlog.WebApp.Components
 {
     public class CategoriesWidget : ViewComponent
     {
-        private readonly IBlogRepository _blogRepository;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public CategoriesWidget(IBlogRepository blogRepository) => _blogRepository = blogRepository;
+        public CategoriesWidget(ICategoryRepository categoryRepository) => _categoryRepository = categoryRepository;
 
-        public async Task<IViewComponentResult> InvokeAsync() => View(await _blogRepository.GetCategoriesAsync());
+        public async Task<IViewComponentResult> InvokeAsync() => View(await _categoryRepository.GetCategoriesAsync());
 
         //public async Task<IViewComponentResult> InvokeAsync()
         //{
