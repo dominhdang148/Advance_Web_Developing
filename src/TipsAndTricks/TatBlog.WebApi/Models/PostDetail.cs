@@ -12,6 +12,7 @@
         public string ViewCount { get; set; }
         public DateTime PostedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
+        public bool Published { get; set; }
         public CategoryDto Category { get; set; }
         public AuthorDto Author { get; set; }
         public IList<TagDto> Tags { get; set; }

@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace TatBlog.WebApi.Models
 {
-    public class PostFilterModel : PagingModel
+    public class PostFilterModel
     {
         public string Keyword { get; set; }
         public int? AuthorID { get; set; }
@@ -13,20 +13,20 @@ namespace TatBlog.WebApi.Models
         public int? Month { get; set; }
 
 
-        //public IEnumerable<SelectListItem> AuthorList { get; set; }
-        //public IEnumerable<SelectListItem> CategoryLíst { get; set; }
-        //public IEnumerable<SelectListItem> MonthList
-        //{
-        //    get; set;
-        //}
+        public IEnumerable<SelectListItem> AuthorList { get; set; }
+        public IEnumerable<SelectListItem> CategoryList { get; set; }
+        public IEnumerable<SelectListItem> MonthList
+        {
+            get; set;
+        }
 
-        //public PostFilterModel()
-        //{
-        //    MonthList = Enumerable.Range(1, 12).Select(m => new SelectListItem()
-        //    {
-        //        Value = m.ToString(),
-        //        Text = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(m)
-        //    }).ToList();
-        //}
+        public PostFilterModel()
+        {
+            MonthList = Enumerable.Range(1, 12).Select(m => new SelectListItem()
+            {
+                Value = m.ToString(),
+                Text = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(m)
+            }).ToList();
+        }
     }
 }

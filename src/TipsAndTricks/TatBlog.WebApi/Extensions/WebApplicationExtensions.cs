@@ -21,7 +21,7 @@ namespace TatBlog.WebApi.Extensions
             builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             builder.Services.AddScoped<ITagRepository, TagRepository>();
-
+            
             return builder;
         }
         public static WebApplicationBuilder ConfigureCors(this WebApplicationBuilder builder)
