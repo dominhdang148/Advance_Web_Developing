@@ -18,7 +18,7 @@ namespace TatBlog.Core.Entities
         public string Title { get; set; }
 
         // Mô tả hay giới thiệu ngắn về nội dung
-        public string ShortDecription { get; set; }
+        public string ShortDescription { get; set; }
 
         // Nội dung chi tiết về bài viết
         public string Description { get; set; }

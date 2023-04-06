@@ -19,14 +19,14 @@ namespace TatBlog.WebApi.Endpoints
     {
         public static WebApplication MapPostEndpoint(this WebApplication app)
         {
-            var routeGroupBuilder = app.MapGroup("/api/post");
+            var routeGroupBuilder = app.MapGroup("/api/posts");
 
 
             routeGroupBuilder.MapGet("/get-filter", GetFilter)
                 .WithName("GetFilter")
                 .Produces<ApiResponse<PostFilterModel>>();
 
-            routeGroupBuilder.MapGet("/get-posts-filter", GetFilteredPost)
+            routeGroupBuilder.MapGet("/", GetFilteredPost)
                .WithName("GetFilteredPost")
                .Produces<ApiResponse<PaginationResult<PostDto>>>();
 
@@ -112,7 +112,7 @@ namespace TatBlog.WebApi.Endpoints
             post.Title = model.Title;
             post.AuthorId = model.AuthorId;
             post.CategoryId = model.CategoryId;
-            post.ShortDecription = model.ShortDecription;
+            post.ShortDescription = model.ShortDecription;
             post.Description = model.Description;
             post.Meta = model.Meta;
             post.Published = model.Published;

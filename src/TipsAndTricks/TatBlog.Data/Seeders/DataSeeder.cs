@@ -289,7 +289,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="ASP.NET Core Dianostic Scenarios",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="aspnet-core-dianostic-scenarios",
@@ -307,7 +307,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="Tip to manage your data",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="tip-to-manage-your-data",
@@ -325,7 +325,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="Top web developing frameworks",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="top-web-developing-frameworks",
@@ -343,7 +343,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="How I build a game",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="how-i-build-a-game",
@@ -361,7 +361,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="Mobile Developing trend",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="mobile-developing-trend",
@@ -379,7 +379,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="A closer look about facial recognition",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="a-closer-look-about-facial-recognition",
@@ -397,7 +397,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="Front-end developing",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="front-end-developing",
@@ -415,7 +415,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="How I became a server-side developer",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="how-i-became-a-server-side-developer",
@@ -433,7 +433,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="How computer understand our words",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="how-computer-understand-out-words",
@@ -451,7 +451,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="How to have a clean code?",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="how-to-have-a-clean-code",
@@ -469,7 +469,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="How I sort my array",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="how-i-sort-my-array",
@@ -487,7 +487,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="Upside down tree",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="upside-down-tree",
@@ -505,7 +505,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="My reaction about Django",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="my-reaction-about-django",
@@ -523,7 +523,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="Terms about AI",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="terms-about-ai",
@@ -541,7 +541,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="How to be good at SQL",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="how-to-be-good-at-sql",
@@ -559,7 +559,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="Where is Multiple inheritance",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="where-is-multiple-inheritance",
@@ -577,7 +577,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="Prototype in python",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="prototype-in-python",
@@ -595,7 +595,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="Mobile trend",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="mobile-trend",
@@ -613,7 +613,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="Brief history about computer",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="brief-history-about-computer",
@@ -631,7 +631,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="How to host your website?",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="how-to-host-your-website",
@@ -649,7 +649,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="SQL or noSQL?",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="sql-or-nosql",
@@ -667,7 +667,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="Write C# on your html page",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="write-c-shaph-on-your-html-page",
@@ -685,7 +685,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="Japanese Web Application",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="japanese-web-application",
@@ -703,7 +703,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="Widget, what is that?",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="widget-what-is-that",
@@ -721,7 +721,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="ASP.NET tips",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="aspnet-core-dianostic-scenarios",
@@ -739,7 +739,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="Shortest code ever",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="shortest-code-ever",
@@ -757,7 +757,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="Digital brain",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="digital-brain",
@@ -775,7 +775,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="What is docker?",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="what-is-docker?",
@@ -793,7 +793,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="Why I choose Python",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="why-i-choose-python",
@@ -811,7 +811,7 @@ namespace TatBlog.Data.Seeders
                 new()
                 {
                     Title="Look how I made chatbot",
-                    ShortDecription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+                    ShortDescription="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec commodo felis. Integer venenatis velit sit amet vulputate ornare. Maecenas finibus rhoncus ligula, sit amet rhoncus nunc. Vivamus bibendum lorem ipsum. Fusce maximus velit quis turpis iaculis consequat.",
                     Meta="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     UrlSlug="look-how-i-made-chatbot",

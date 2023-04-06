@@ -18,15 +18,15 @@ namespace TatBlog.WebApi.Endpoints
         {
             var routeGroupBuilder = app.MapGroup("/api/categories");
 
-            routeGroupBuilder.MapGet("/", GetCategories)
+            routeGroupBuilder.MapGet("/", GetCategoriesWithoutParameter)
                 .WithName("GetCategories")
-                .Produces<ApiResponse<PaginationResult<CategoryItem>>>();
+                .Produces<ApiResponse<CategoryItem>>();
 
 
             routeGroupBuilder.MapGet("/{id:int}", GetGategoryId)
                 .WithName("GetCategoryById")
                 .Produces<ApiResponse<CategoryItem>>();
-                
+
 
             routeGroupBuilder.MapGet("/{slug:regex(^[a-z0-9_-]+$)}/posts", GetPostsByCategorySlug)
                 .WithName("GetPostsByCategorySlug")
@@ -62,6 +62,9 @@ namespace TatBlog.WebApi.Endpoints
             return Results.Ok(ApiResponse.Success(paginationResult));
         }
 
+        private static async Task<IResult> GetCategoriesWithoutParameter(
+            ICategoryRepository categoryRepository) => Results.Ok(ApiResponse.Success(await categoryRepository.GetCategoriesAsync()));
+
         private static async Task<IResult> GetGategoryId(
             int id,
             ICategoryRepository categoryRepository,
@@ -69,7 +72,7 @@ namespace TatBlog.WebApi.Endpoints
         {
             var category = await categoryRepository.GetCachedCategoryByIdAsync(id);
             return category == null
-                ? Results.Ok(ApiResponse.Fail(HttpStatusCode.NotFound,"Không tìm thấy danh mục"))
+                ? Results.Ok(ApiResponse.Fail(HttpStatusCode.NotFound, "Không tìm thấy danh mục"))
                 : Results.Ok(ApiResponse.Success(mapper.Map<CategoryItem>(category)));
         }
 

@@ -1,7 +1,7 @@
 import './App.css';
-import Navbar from './Component/Navbar';
-import SideBar from './Component/Sidebar';
-import Footer from './Component/Footer';
+import Navbar from './Components/Navbar';
+import SideBar from './Components/Sidebar';
+import Footer from './Components/Footer';
 import Index from './Pages/Index';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
