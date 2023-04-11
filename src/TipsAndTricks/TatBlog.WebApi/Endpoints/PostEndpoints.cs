@@ -36,11 +36,19 @@ namespace TatBlog.WebApi.Endpoints
                 .Produces(401)
                 .Produces<ApiResponse<PostItem>>();
 
+            routeGroupBuilder.MapGet("/random",GetRandomPosts)
+                .WithName("GetRandomPost")
+                .Produces<ApiResponse<PostDto>>();
 
             return app;
 
         }
 
+        private static async Task<IResult> GetRandomPosts(IBlogRepository blogRepository)
+        {
+            var postList = await blogRepository.GetRandomPostsAsync(3);
+            return Results.Ok(ApiResponse.Success(postList));
+        }
 
         private static async Task<IResult> GetFilter(
             IAuthorRepository authorRepository,

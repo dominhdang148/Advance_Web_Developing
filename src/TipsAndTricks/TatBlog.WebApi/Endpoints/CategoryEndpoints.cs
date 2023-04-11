@@ -20,7 +20,7 @@ namespace TatBlog.WebApi.Endpoints
 
             routeGroupBuilder.MapGet("/", GetCategoriesWithoutParameter)
                 .WithName("GetCategories")
-                .Produces<ApiResponse<CategoryItem>>();
+                .Produces<ApiResponse<CategoryItem>> ();
 
 
             routeGroupBuilder.MapGet("/{id:int}", GetGategoryId)

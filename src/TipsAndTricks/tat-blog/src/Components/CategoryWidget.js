@@ -26,7 +26,7 @@ const CategoriesWidget = () => {
                     {categoryList.map((item, index) => {
                         return (
                             <ListGroup.Item key={index}>
-                                <Link to={`/blog/category?slug=${item.urlSlug}`}
+                                <Link to={`/blog/category/${item.urlSlug}`}
                                     title={item.description}
                                     key={index}>
                                     {item.name}
