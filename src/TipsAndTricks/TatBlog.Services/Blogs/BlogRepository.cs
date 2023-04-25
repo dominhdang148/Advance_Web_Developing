@@ -413,6 +413,7 @@ namespace TatBlog.Services.Blogs
             return await _context.Set<Post>()
                 .Include(p => p.Author)
                 .Include(p => p.Category)
+                .Include(p => p.Tags)
                 .Where(p => p.Published == true)
                 .OrderBy(p => Guid.NewGuid())
                 .Take(number)

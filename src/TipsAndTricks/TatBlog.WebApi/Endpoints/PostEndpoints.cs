@@ -27,8 +27,16 @@ namespace TatBlog.WebApi.Endpoints
                 .Produces<ApiResponse<PostFilterModel>>();
 
             routeGroupBuilder.MapGet("/", GetFilteredPost)
-               .WithName("GetFilteredPost")
+               .WithName("GetPosts")
                .Produces<ApiResponse<PaginationResult<PostDto>>>();
+
+            routeGroupBuilder.MapGet("/get-posts-filter", GetFilteredPost)
+              .WithName("GetFilteredPost")
+              .Produces<ApiResponse<PaginationResult<PostDto>>>();
+
+            routeGroupBuilder.MapGet("/{id:int}", GetPostById)
+                .WithName("GetPostByID")
+                .Produces<ApiResponse<PostDetail>>();
 
             routeGroupBuilder.MapPost("/", AddPost)
                 .WithName("AddNewPost")
@@ -36,18 +44,34 @@ namespace TatBlog.WebApi.Endpoints
                 .Produces(401)
                 .Produces<ApiResponse<PostItem>>();
 
-            routeGroupBuilder.MapGet("/random",GetRandomPosts)
+            routeGroupBuilder.MapGet("/random", GetRandomPosts)
                 .WithName("GetRandomPost")
-                .Produces<ApiResponse<PostDto>>();
+                .Produces<ApiResponse<List<PostDto>>>();
 
             return app;
 
         }
 
-        private static async Task<IResult> GetRandomPosts(IBlogRepository blogRepository)
+        private static async Task<IResult> GetRandomPosts(
+            IBlogRepository blogRepository,
+            IMapper mapper)
         {
             var postList = await blogRepository.GetRandomPostsAsync(3);
-            return Results.Ok(ApiResponse.Success(postList));
+            return Results.Ok(ApiResponse.Success(mapper.Map<List<PostDto>>(postList)));
+        }
+
+        private static async Task<IResult> GetPostById(
+           int id,
+           IBlogRepository blogRepository,
+             IMapper mapper
+           )
+        {
+            var post = await blogRepository.GetPostByIdAsync(id, true);
+            if (post.Author == null || post.Category == null)
+            {
+                Console.WriteLine("It is fucking null");
+            }
+            return Results.Ok(ApiResponse.Success(mapper.Map<PostDetail>(post)));
         }
 
         private static async Task<IResult> GetFilter(
@@ -70,6 +94,7 @@ namespace TatBlog.WebApi.Endpoints
 
             return Results.Ok(ApiResponse.Success(model));
         }
+
 
 
         private static async Task<IResult> GetFilteredPost(

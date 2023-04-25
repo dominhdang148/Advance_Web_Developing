@@ -25,12 +25,12 @@ const Navbar = () => {
                             </Link>
                         </Nav.Item>
 
-                         <Nav.Item>
+                        <Nav.Item>
                             <Link to='/blog/contact' className='nav-link text-dark'>
                                 Liên hệ
                             </Link>
                         </Nav.Item>
-                         <Nav.Item>
+                        <Nav.Item>
                             <Link to='/blog/rss' className='nav-link text-dark'>
                                 RSS Feed
                             </Link>
